@@ -1,0 +1,86 @@
+.methodSection {
+  background-color: #f9fafc;
+  padding: 80px 10%;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.textBox {
+  flex: 1;
+  min-width: 300px;
+}
+
+.textBox h2 {
+  font-size: 2rem;
+  color: #00a676;
+  margin-bottom: 20px;
+}
+
+.textBox p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.textBox ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.textBox li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.highlight {
+  color: #00a676;
+  font-weight: bold;
+}
+
+.btnLearnMore {
+  background-color: #00a676;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.btnLearnMore:hover {
+  background-color: #00915f;
+}
+
+.imageBox {
+  flex: 1;
+  text-align: center;
+}
+
+.imageBox img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .textBox {
+    order: 2;
+  }
+
+  .imageBox {
+    order: 1;
+  }
+}

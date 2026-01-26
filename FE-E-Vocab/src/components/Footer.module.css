@@ -1,0 +1,86 @@
+.footer {
+  background: #f4f6f8;
+  padding: 60px 10% 30px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.left {
+  flex: 1;
+  min-width: 220px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.left p {
+  max-width: 250px;
+  color: #555;
+}
+
+.middle {
+  flex: 1;
+  min-width: 150px;
+}
+
+.middle h4,
+.right h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.middle ul {
+  list-style: none;
+  padding: 0;
+}
+
+.middle li {
+  margin-bottom: 8px;
+}
+
+.middle a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.middle a:hover {
+  color: #009f6b;
+}
+
+.right {
+  flex: 1;
+  min-width: 200px;
+}
+
+.bottom {
+  text-align: center;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .left p {
+    max-width: 100%;
+  }
+}

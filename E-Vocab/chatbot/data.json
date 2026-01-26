@@ -1,0 +1,2359 @@
+{
+  "nlu_data": [
+    {
+      "text": "chào bạn",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "chào bot",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "hey bot",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "xin chào nhé",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "bắt đầu nào",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "có ai ở đó không",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "bot ơi",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "chào buổi sáng",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "chào buổi tối",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "hi there",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "chào buổi trưa",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "greetings",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "làm việc thôi",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "yo",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "hey there",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "chào trợ lý ảo",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "bạn có đó không",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "good morning",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "good evening",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "good afternoon",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "bắt đầu cuộc trò chuyện",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "xin chào buổi sáng",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "rất vui được gặp bạn",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "how are you doing?",
+      "intent": "chao_hoi",
+      "entities": []
+    },
+    {
+      "text": "tra từ apple",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 7,
+          "end": 12,
+          "value": "apple",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "định nghĩa của từ beautiful là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 27,
+          "value": "beautiful",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "technology nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 0,
+          "end": 10,
+          "value": "technology",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho mình hỏi từ essential",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "essential",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích từ computer",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 22,
+          "value": "computer",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phiên âm của từ challenge như thế nào",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "challenge",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách đọc từ success",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 19,
+          "value": "success",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ knowledge có nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 3,
+          "end": 12,
+          "value": "knowledge",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "dịch từ environment",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 19,
+          "value": "environment",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ vựng communication",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 21,
+          "value": "communication",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra cứu từ vựng opportunity",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 27,
+          "value": "opportunity",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho mình xin định nghĩa của từ government",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 31,
+          "end": 41,
+          "value": "government",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ experience là loại từ gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 3,
+          "end": 13,
+          "value": "experience",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ chocolate",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 20,
+          "value": "chocolate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "làm thế nào để phát âm từ schedule",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 26,
+          "end": 34,
+          "value": "schedule",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tìm giúp mình từ development",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 17,
+          "end": 28,
+          "value": "development",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "nghĩa của từ 'information'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 25,
+          "value": "information",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'beautiful' trong tiếng việt là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 13,
+          "value": "beautiful",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Tôi muốn biết nghĩa của từ 'necessary'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 28,
+          "end": 37,
+          "value": "necessary",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "What does 'freedom' mean?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 18,
+          "value": "freedom",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Can you define 'curiosity' for me?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "curiosity",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronunciation of 'entrepreneur'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 30,
+          "value": "entrepreneur",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to say 'queue'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 17,
+          "value": "queue",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ này nhé: accomplishment",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 30,
+          "value": "accomplishment",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho mình làm quiz đi",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "kiểm tra bài cũ được không",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "bắt đầu làm bài kiểm tra",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "tôi muốn làm một bài quiz",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "làm bài tập nào",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "kiểm tra kiến thức của tôi",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "ôn bài thôi",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "có bài test nào không",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "bắt đầu quiz",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "luyện tập từ vựng",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "cho tôi một câu đố",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "đố vui từ vựng đi bot",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "tới giờ kiểm tra rồi",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "tôi sẵn sàng làm bài test",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "bắt đầu thử thách",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "let's start a quiz",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "give me a test",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "quiz me",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "I want to practice",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "Test my knowledge",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "cùng ôn lại kiến thức nào",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "bạn có thể kiểm tra tôi không?",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "làm một bài trắc nghiệm nhé",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "thử tài của tôi đi",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "I'm ready for a challenge",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "start the test",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "hãy bắt đầu phần luyện tập",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "có bài tập nào cho tôi không",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "Let's review",
+      "intent": "lam_quiz",
+      "entities": []
+    },
+    {
+      "text": "từ 'serendipity' nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 15,
+          "value": "serendipity",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ 'ephemeral'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 21,
+          "value": "ephemeral",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích giúp mình từ 'ubiquitous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 25,
+          "end": 35,
+          "value": "ubiquitous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "What is the meaning of 'mellifluous'?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 24,
+          "end": 35,
+          "value": "mellifluous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra cứu từ 'cacophony'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 21,
+          "value": "cacophony",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'eloquence' là danh từ hay tính từ",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 13,
+          "value": "eloquence",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách dùng từ 'resilience'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 24,
+          "value": "resilience",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "define 'integrity'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 17,
+          "value": "integrity",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'empathy' dịch sang tiếng việt",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 8,
+          "value": "empathy",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho hỏi từ 'synergy' có nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 19,
+          "value": "synergy",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tìm định nghĩa của 'quintessential'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 20,
+          "end": 34,
+          "value": "quintessential",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm của 'onomatopoeia' là gì?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 13,
+          "end": 25,
+          "value": "onomatopoeia",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'perspicacious' nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 14,
+          "value": "perspicacious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how do you pronounce 'idiosyncratic'?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 22,
+          "end": 35,
+          "value": "idiosyncratic",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "dịch giúp mình từ 'magnanimous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 19,
+          "end": 30,
+          "value": "magnanimous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ 'pulchritudinous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 23,
+          "value": "pulchritudinous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "nghĩa của 'vicarious' là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 20,
+          "value": "vicarious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích 'ephemeral' trong một câu",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 21,
+          "value": "ephemeral",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'obfuscate' đọc như thế nào?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 13,
+          "value": "obfuscate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "what is 'procrastinate'?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 22,
+          "value": "procrastinate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra nhanh từ 'benevolent'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 24,
+          "value": "benevolent",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'cognizant' có phải là tính từ không",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 10,
+          "value": "cognizant",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "định nghĩa 'diligent'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 20,
+          "value": "diligent",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải nghĩa từ 'eloquent'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 15,
+          "end": 23,
+          "value": "eloquent",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "dịch từ 'fastidious' sang tiếng Việt",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 19,
+          "value": "fastidious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'gregarious' là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 11,
+          "value": "gregarious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm 'hegemony'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 17,
+          "value": "hegemony",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "what does 'iconoclast' mean?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 21,
+          "value": "iconoclast",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ 'juxtaposition'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 21,
+          "value": "juxtaposition",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'kowtow' có nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 7,
+          "value": "kowtow",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "định nghĩa của 'loquacious'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 26,
+          "value": "loquacious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích 'maverick'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 20,
+          "value": "maverick",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'nefarious' là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 13,
+          "value": "nefarious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách phát âm 'obsequious'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 24,
+          "value": "obsequious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ 'paradigm'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 16,
+          "value": "paradigm",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tìm từ 'querulous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 17,
+          "value": "querulous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'recalcitrant' nghĩa là gì?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 13,
+          "value": "recalcitrant",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích 'salient' giúp tôi",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 19,
+          "value": "salient",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho hỏi từ 'taciturn'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 20,
+          "value": "taciturn",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "định nghĩa 'ubiquity'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 20,
+          "value": "ubiquity",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ 'vacillate'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 21,
+          "value": "vacillate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ 'wanton'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 14,
+          "value": "wanton",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "nghĩa của 'xenophobia' là gì?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 21,
+          "value": "xenophobia",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'yearn' nghĩa là gì?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 9,
+          "value": "yearn",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích 'zealot'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 18,
+          "value": "zealot",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "định nghĩa 'aberration'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 22,
+          "value": "aberration",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra cứu 'blandishment'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 21,
+          "value": "blandishment",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "'cajole' nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 1,
+          "end": 7,
+          "value": "cajole",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'debauch' đọc thế nào",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 11,
+          "value": "debauch",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích từ 'egregious'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 15,
+          "end": 24,
+          "value": "egregious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm của từ 'facetious'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "facetious",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tìm giúp mình từ 'garrulous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 27,
+          "value": "garrulous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "nghĩa của từ 'hapless'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 21,
+          "value": "hapless",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'impeccable' trong tiếng việt là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 14,
+          "value": "impeccable",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Tôi muốn biết nghĩa của từ 'jubilant'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 28,
+          "end": 36,
+          "value": "jubilant",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "what does 'kismet' mean?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 17,
+          "value": "kismet",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "can you define 'laudatory' for me?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "laudatory",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronunciation of 'malevolent'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 28,
+          "value": "malevolent",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to say 'nonchalant'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 22,
+          "value": "nonchalant",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ này nhé: obstreperous",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 28,
+          "value": "obstreperous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "dịch từ 'pejorative'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 19,
+          "value": "pejorative",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ vựng 'quixotic'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 17,
+          "value": "quixotic",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra cứu từ vựng 'rancor'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 17,
+          "end": 23,
+          "value": "rancor",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho mình xin định nghĩa của từ 'sycophant'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 32,
+          "end": 41,
+          "value": "sycophant",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'tirade' là loại từ gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 10,
+          "value": "tirade",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ 'umbrage'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 19,
+          "value": "umbrage",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "làm thế nào để phát âm từ 'virtuoso'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 27,
+          "end": 35,
+          "value": "virtuoso",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tìm giúp mình từ 'winsome'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 25,
+          "value": "winsome",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "nghĩa của từ 'abate'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 19,
+          "value": "abate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'burgeon' trong tiếng việt là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 11,
+          "value": "burgeon",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Tôi muốn biết nghĩa của từ 'catalyst'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 28,
+          "end": 36,
+          "value": "catalyst",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "What does 'disparate' mean?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 20,
+          "value": "disparate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Can you define 'exacerbate' for me?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 26,
+          "value": "exacerbate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronunciation of 'fortuitous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 28,
+          "value": "fortuitous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to say 'gourmand'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 20,
+          "value": "gourmand",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ này nhé: hierarchy",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "hierarchy",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "định nghĩa của từ 'incongruous' là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 19,
+          "end": 30,
+          "value": "incongruous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "languid nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 0,
+          "end": 7,
+          "value": "languid",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho mình hỏi từ mitigate",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 24,
+          "value": "mitigate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "giải thích từ nascent",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 21,
+          "value": "nascent",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phiên âm của từ opulence như thế nào",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 24,
+          "value": "opulence",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách đọc từ piety",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 17,
+          "value": "piety",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ replete có nghĩa là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 3,
+          "end": 10,
+          "value": "replete",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "dịch từ superfluous",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 19,
+          "value": "superfluous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ vựng tenuous",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 8,
+          "end": 15,
+          "value": "tenuous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra cứu từ vựng verbose",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 23,
+          "value": "verbose",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cho mình xin định nghĩa của từ aesthetic",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 31,
+          "end": 40,
+          "value": "aesthetic",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ analogous là loại từ gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 3,
+          "end": 12,
+          "value": "analogous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ bolster",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 18,
+          "value": "bolster",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "làm thế nào để phát âm từ chicanery",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 26,
+          "end": 35,
+          "value": "chicanery",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tìm giúp mình từ dissonance",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 17,
+          "end": 27,
+          "value": "dissonance",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "nghĩa của từ 'engender'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 14,
+          "end": 22,
+          "value": "engender",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ 'gullible' trong tiếng việt là gì",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 4,
+          "end": 12,
+          "value": "gullible",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Tôi muốn biết nghĩa của từ 'homogeneous'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 28,
+          "end": 39,
+          "value": "homogeneous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "What does 'laconic' mean?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 11,
+          "end": 18,
+          "value": "laconic",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "Can you define 'misanthrope' for me?",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 27,
+          "value": "misanthrope",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronunciation of 'obdurate'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 18,
+          "end": 26,
+          "value": "obdurate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to say 'philanthropic'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 12,
+          "end": 25,
+          "value": "philanthropic",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra từ này nhé: pragmatic",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 16,
+          "end": 25,
+          "value": "pragmatic",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "dịch từ 'venerate'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 17,
+          "value": "venerate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ vựng 'volatile'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 9,
+          "end": 17,
+          "value": "volatile",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "tra cứu từ vựng 'zephyr'",
+      "intent": "tra_tu",
+      "entities": [
+        {
+          "start": 17,
+          "end": 23,
+          "value": "zephyr",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "bạn có thể làm gì",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "chức năng của bạn là gì",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "bạn giúp được gì",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "bạn có những tính năng nào",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "what can you do",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "what are your features",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "bạn làm được những gì",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "giới thiệu về bạn",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "tell me about your features",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "bạn có thể giúp tôi những gì",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "bạn làm gì được",
+      "intent": "hoi_chuc_nang",
+      "entities": []
+    },
+    {
+      "text": "giới thiệu về trang web",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "trang web này là gì",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "website này làm gì",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "cho tôi biết về trang web này",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "trang web này có gì",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "what is this website about",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "tell me about this website",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "giới thiệu trang web",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "trang web này giúp gì",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "website này về cái gì",
+      "intent": "gioi_thieu_trang_web",
+      "entities": []
+    },
+    {
+      "text": "phát âm từ apple",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 11,
+          "end": 16,
+          "value": "apple",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc từ beautiful",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 8,
+          "end": 17,
+          "value": "beautiful",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách phát âm từ technology",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 17,
+          "end": 27,
+          "value": "technology",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronounce the word computer",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 20,
+          "end": 28,
+          "value": "computer",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to pronounce challenge",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 20,
+          "end": 29,
+          "value": "challenge",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc giúp mình từ success",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 17,
+          "end": 24,
+          "value": "success",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ 'knowledge'",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 11,
+          "end": 20,
+          "value": "knowledge",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách đọc từ environment",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 12,
+          "end": 23,
+          "value": "environment",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronunciation of communication",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 20,
+          "end": 33,
+          "value": "communication",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc từ opportunity",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 7,
+          "end": 19,
+          "value": "opportunity",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how do you say government",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 16,
+          "end": 26,
+          "value": "government",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ experience",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 11,
+          "end": 21,
+          "value": "experience",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc giúp tôi từ chocolate",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 15,
+          "end": 24,
+          "value": "chocolate",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách phát âm schedule",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 15,
+          "end": 24,
+          "value": "schedule",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronounce development",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 10,
+          "end": 21,
+          "value": "development",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc từ information",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 7,
+          "end": 19,
+          "value": "information",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to say essential",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 12,
+          "end": 21,
+          "value": "essential",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ 'gorgeous'",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 11,
+          "end": 19,
+          "value": "gorgeous",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách đọc từ 'necessary'",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 12,
+          "end": 21,
+          "value": "necessary",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách phát âm từ grass",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 17,
+          "end": 22,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "phát âm từ grass",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 11,
+          "end": 16,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc từ grass",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 7,
+          "end": 12,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách đọc từ grass",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 12,
+          "end": 17,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "pronounce grass",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 10,
+          "end": 15,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "how to pronounce grass",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 20,
+          "end": 25,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách phát âm từ 'grass'",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 18,
+          "end": 24,
+          "value": "grass",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ brother đọc như thế nào",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 4,
+          "end": 11,
+          "value": "brother",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "có thể đọc cho tớ từ bone",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 20,
+          "end": 24,
+          "value": "bone",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "có thể đọc cho tôi từ brother",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 22,
+          "end": 29,
+          "value": "brother",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "cách đọc từ brother",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 12,
+          "end": 19,
+          "value": "brother",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc cho tôi từ bone",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 16,
+          "end": 20,
+          "value": "bone",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc cho tớ từ bone",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 15,
+          "end": 19,
+          "value": "bone",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ bone đọc như thế nào",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 4,
+          "end": 8,
+          "value": "bone",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ apple đọc như thế nào",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 4,
+          "end": 9,
+          "value": "apple",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "từ computer đọc như thế nào",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 4,
+          "end": 12,
+          "value": "computer",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "có thể đọc cho tớ từ beautiful",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 20,
+          "end": 29,
+          "value": "beautiful",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc cho tôi từ technology",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 16,
+          "end": 26,
+          "value": "technology",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "đọc cho tớ từ success",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 15,
+          "end": 22,
+          "value": "success",
+          "entity": "tu_vung"
+        }
+      ]
+    },
+    {
+      "text": "có thể đọc cho tôi từ knowledge",
+      "intent": "phat_am_tu_vung",
+      "entities": [
+        {
+          "start": 22,
+          "end": 31,
+          "value": "knowledge",
+          "entity": "tu_vung"
+        }
+      ]
+    }
+  ]
+}

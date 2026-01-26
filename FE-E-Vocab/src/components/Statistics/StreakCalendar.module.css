@@ -1,0 +1,348 @@
+.card {
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+  margin-bottom: 2px;
+}
+
+.header h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actions button:hover:not(:disabled) {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4338ca;
+}
+
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.statsRow {
+  display: flex;
+  gap: 12px;
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.statItem p {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 3px;
+}
+
+.statItem strong {
+  font-size: 18px;
+  color: #111827;
+}
+
+.iconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currentIcon {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.longestIcon {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.calendarWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  letter-spacing: 0.03em;
+}
+
+.weekdays span {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.placeholder {
+  height: 38px;
+}
+
+.dayCell {
+  height: 38px;
+  border-radius: 10px;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.dayCell:hover {
+  border-color: #d1d5db;
+}
+
+.active {
+  background: #fef3c7;
+  color: #9a3412;
+  border-color: #fde68a;
+}
+
+.today {
+  border-color: #60a5fa;
+  box-shadow: inset 0 0 0 1px #60a5fa;
+}
+
+.legend {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.activeDot {
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+}
+
+.todayDot {
+  background: #dbeafe;
+  border: 1px solid #60a5fa;
+}
+
+.loadingState,
+.emptyState,
+.errorState {
+  text-align: center;
+  padding: 18px 0;
+  font-size: 13px;
+  border-radius: 12px;
+}
+
+.loadingState {
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+.emptyState {
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+.errorState {
+  color: #b91c1c;
+  background: #fef2f2;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+=============================== */
+
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header h3 {
+    font-size: 16px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .actions {
+    align-self: flex-end;
+  }
+
+  .actions button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .statItem {
+    padding: 10px;
+  }
+
+  .statItem p {
+    font-size: 11px;
+  }
+
+  .statItem strong {
+    font-size: 16px;
+  }
+
+  .iconBox {
+    width: 32px;
+    height: 32px;
+  }
+
+  .grid {
+    gap: 4px;
+  }
+
+  .dayCell {
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .placeholder {
+    height: 32px;
+  }
+
+  .weekdays {
+    font-size: 10px;
+  }
+
+  .legend {
+    font-size: 11px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .header h3 {
+    font-size: 15px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+  }
+
+  .actions button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .statItem {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .statItem p {
+    font-size: 10px;
+  }
+
+  .statItem strong {
+    font-size: 14px;
+  }
+
+  .iconBox {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dayCell {
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .placeholder {
+    height: 28px;
+  }
+
+  .weekdays {
+    font-size: 9px;
+  }
+
+  .legend {
+    font-size: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+

@@ -1,0 +1,656 @@
+:root{
+    --primary: #4ADE80;
+    --primary-dark: #2EBF66;
+    --primary-light: #A7F3C0;
+    --bg: #F5F7FA;
+    --border: #ddd;
+    --text: #24302A;
+    --muted: #64748B;
+  
+    --card-radius: 16px;
+    --shadow-soft: 0 4px 12px rgba(0,0,0,0.12);
+    --shadow-medium: 0 8px 22px rgba(0,0,0,0.15);
+  }
+  
+  /* ===================== LAYOUT ===================== */
+  .topicPage {
+    display: flex;
+    min-height: 100vh;
+    background: #f7f9fb;
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+  }
+  
+  /* ============================================================
+     BACK LINK
+     ============================================================ */
+  .backBtn {
+    background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+    border:none;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition: transform .15s, box-shadow .15s;
+    display:inline-block;
+  }
+  
+  .backBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button);
+  }
+  
+  
+  /* ===== SIDEBAR (giữ nguyên 220px) ===== */
+  .sidebar {
+    width: 220px;
+    background: #fff;
+    border-left: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .sidebar button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .sidebar button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  /* MAIN */
+  .main {
+    flex: 1;
+    padding: 30px;
+    min-width: 0;
+  }
+  
+  /* ===================== FLASHCARD NGANG ===================== */
+  .flashcardZone {
+    margin-bottom: 30px;
+  }
+
+  .flashcardHorizontal {
+    width: 100%;
+    max-width: 650px;
+    height: 320px;
+    position: relative;
+    perspective: 1000px;
+    margin: 30px auto;
+    cursor: pointer;
+  }
+  
+  .flashcardFace {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: var(--card-radius);
+    background: white;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.6s, box-shadow .3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .front { transform: rotateY(0deg); }
+  .back {
+    transform: rotateY(180deg);
+    background: #FFF;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 30px;
+  }
+  
+  .pronunciationSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .pronunciationSection p {
+    margin: 0;
+    word-break: break-word;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  
+  .pronunciationSection p strong {
+    color: var(--primary-dark);
+    font-size: 22px;
+  }
+  
+  .audioBtnBack {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .audioBtnBack:hover {
+    transform: scale(1.08);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .back p {
+    margin: 8px 0;
+    word-break: break-word;
+  }
+  .flipped .front { transform: rotateY(180deg); }
+  .flipped .back { transform: rotateY(360deg); }
+  
+  /* LEFT giữ nguyên kích thước */
+  .flashcardLeft {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flashcardImage {
+    width: 90%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  
+  /* RIGHT giữ nguyên */
+  .flashcardRight {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  
+  .flashcardWord {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    word-break: break-word;
+  }
+  
+  /* AUDIO BUTTON */
+  .audioBtn {
+    width: 50px;      /* giữ nguyên */
+    height: 50px;     /* giữ nguyên */
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+  }
+  
+  .audioBtn:hover {
+    transform: scale(1.06);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  /* Progress giữ nguyên */
+  .progress {
+    position: absolute;
+    top: -70px;
+    right: -10px;
+    background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color: #FFF;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Controls giữ nguyên */
+  .flashcardControls {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .navBtn {
+    border: none;
+    background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 10px;
+    color: white;
+    transition: 0.2s;
+  }
+  
+  .navBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  /* Mobile action buttons - ẩn trên desktop */
+  .mobileActionBtn {
+    display: none;
+  }
+  
+  /* ===================== VOCABULARY LIST ===================== */
+  .vocabList {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .vocabRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px dashed var(--primary);
+    border-radius: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .vocabRow:hover {
+    background: var(--primary-light);
+    transform: translateX(4px);
+  }
+  
+  .audioBtn.big {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .vocabWord, .vocabMeaning {
+    flex: 2;
+    min-height: 50px;
+    background: #fbfdfb;
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+  
+  /* giữ nguyên text */
+  .vocabWord p { margin: 2px 0; }
+  .pos { color: #666; font-size: 0.9em; }
+  .phonetic { color: #444; font-style: italic; }
+  
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 980px){
+    .sidebar{ 
+      display: none; 
+    }
+    .main {
+      padding: 24px;
+    }
+    /* Hiển thị các nút mobile khi sidebar bị ẩn */
+    .mobileActionBtn {
+      display: inline-block;
+      border: none;
+      background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 10px;
+      color: white;
+      transition: 0.2s;
+      font-size: 14px;
+    }
+    
+    .mobileActionBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .mobileActionBtn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .flashcardControls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .topicPage {
+      flex-direction: column;
+    }
+    
+    .main {
+      padding: 20px;
+    }
+    
+    .flashcardHorizontal {
+      height: 280px;
+      margin: 20px auto;
+    }
+    
+    .flashcardFace {
+      padding: 16px;
+    }
+    
+    .flashcardImage {
+      height: 180px;
+    }
+    
+    .flashcardWord {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    
+    .flashcardRight {
+      width: 50%;
+    }
+    
+    .flashcardLeft {
+      width: 50%;
+    }
+    
+    .progress {
+      top: -50px;
+      right: 0;
+      font-size: 12px;
+      padding: 3px 8px;
+    }
+    
+    .flashcardControls {
+      margin-top: 16px;
+    }
+    
+    .navBtn {
+      padding: 8px 16px;
+      font-size: 14px;
+      margin: 0 6px;
+    }
+    
+    .mobileActionBtn {
+      padding: 8px 16px;
+      font-size: 14px;
+      margin: 0 6px;
+    }
+    
+    .vocabList {
+      margin-top: 20px;
+      gap: 6px;
+    }
+    
+    .vocabRow {
+      padding: 8px 10px;
+      gap: 8px;
+      border-radius: 8px;
+    }
+    
+    .audioBtn.big {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    
+    .vocabWord, .vocabMeaning {
+      padding: 4px 8px;
+      font-size: 13px;
+      min-height: auto;
+      border-radius: 6px;
+    }
+    
+    .vocabWord p {
+      margin: 1px 0;
+      font-size: 13px;
+    }
+    
+    .phonetic {
+      font-size: 11px;
+    }
+    
+    .main h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    .main {
+      padding: 16px;
+    }
+    
+    .backBtn {
+      padding: 10px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .flashcardHorizontal {
+      height: 240px;
+      margin: 16px auto;
+    }
+    
+    .flashcardFace {
+      padding: 12px;
+      /* Giữ nguyên layout ngang - hình ảnh một bên */
+    }
+    
+    .flashcardLeft {
+      width: 50%;
+      /* Giữ nguyên width 50% */
+    }
+    
+    .flashcardRight {
+      width: 45%;
+      /* Giữ nguyên width 45% */
+    }
+    
+    .flashcardImage {
+      height: 160px;
+      width: 90%;
+      max-width: 100%;
+    }
+    
+    .flashcardWord {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    
+    .audioBtn {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .progress {
+      top: -40px;
+      right: 0;
+      font-size: 11px;
+      padding: 2px 6px;
+    }
+    
+    .flashcardControls {
+      margin-top: 12px;
+    }
+    
+    .navBtn {
+      padding: 8px 14px;
+      font-size: 13px;
+      margin: 0 4px;
+    }
+    
+    .mobileActionBtn {
+      padding: 8px 14px;
+      font-size: 13px;
+      margin: 0 4px;
+    }
+    
+    .flashcardControls {
+      gap: 6px;
+    }
+    
+    .vocabList {
+      margin-top: 16px;
+      gap: 4px;
+    }
+    
+    .vocabRow{ 
+      /* Giữ nguyên layout ngang - 3 cột: audio, từ, nghĩa */
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    
+    .vocabWord, .vocabMeaning {
+      flex: 2;
+      min-height: auto;
+      padding: 4px 6px;
+      font-size: 12px;
+    }
+    
+    .vocabWord p {
+      margin: 0;
+      font-size: 12px;
+    }
+    
+    .phonetic {
+      font-size: 10px;
+    }
+    
+    .audioBtn.big {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+    
+    .main h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main {
+      padding: 12px;
+    }
+    
+    .flashcardHorizontal {
+      height: 200px;
+    }
+    
+    .flashcardImage {
+      height: 120px;
+    }
+    
+    .flashcardWord {
+      font-size: 16px;
+    }
+    
+    .flashcardFace {
+      padding: 10px;
+    }
+    
+    .back {
+      padding: 16px;
+      font-size: 14px;
+    }
+    
+    .back p {
+      margin: 6px 0;
+      font-size: 13px;
+    }
+    
+    .navBtn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+    
+    .mobileActionBtn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+    
+    .flashcardControls {
+      gap: 4px;
+    }
+    
+    .vocabList {
+      margin-top: 12px;
+      gap: 3px;
+    }
+    
+    .vocabRow {
+      padding: 5px 6px;
+      gap: 4px;
+      border-radius: 5px;
+      align-items: center;
+    }
+    
+    .audioBtn.big {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+    
+    .vocabWord, .vocabMeaning {
+      flex: 2;
+      padding: 3px 5px;
+      font-size: 11px;
+      min-height: auto;
+    }
+    
+    .vocabWord p {
+      margin: 0;
+      font-size: 11px;
+    }
+    
+    .phonetic {
+      font-size: 9px;
+    }
+    
+    .vocabMeaning {
+      font-size: 11px;
+    }
+    
+    .main h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+  }
+  

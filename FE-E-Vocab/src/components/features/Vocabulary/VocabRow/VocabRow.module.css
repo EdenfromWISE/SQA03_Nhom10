@@ -1,0 +1,58 @@
+.vocabRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card-bg, #fff);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+.vocabRow:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vocabWord {
+  flex: 1;
+  min-width: 0;
+}
+
+.word {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-primary, #1f2937);
+}
+
+.pos {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #6b7280);
+  font-weight: normal;
+}
+
+.phonetic {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #9ca3af);
+}
+
+.vocabMeaning {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: var(--text-primary, #374151);
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .vocabRow {
+    flex-wrap: wrap;
+  }
+  
+  .vocabMeaning {
+    width: 100%;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+}
+

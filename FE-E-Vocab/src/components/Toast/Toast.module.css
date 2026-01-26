@@ -1,0 +1,155 @@
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    animation: slideIn 0.3s ease-out;
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+}
+
+.toast.exit {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.icon {
+    font-size: 20px;
+    font-weight: bold;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.message {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* Success Toast */
+.toast.success {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    border: 2px solid #4ade80;
+    color: #15803d;
+}
+
+.toast.success .icon {
+    background: #22c55e;
+    color: #ffffff;
+}
+
+/* Error Toast */
+.toast.error {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    border: 2px solid #f87171;
+    color: #b91c1c;
+}
+
+.toast.error .icon {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* Info Toast */
+.toast.info {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    border: 2px solid #60a5fa;
+    color: #1e40af;
+}
+
+.toast.info .icon {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+    .toast {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        max-width: none;
+        padding: 14px 16px;
+    }
+
+    .toast.exit {
+        animation: slideDown 0.3s ease-in forwards;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+    }
+
+    .message {
+        font-size: 13px;
+    }
+
+    .icon {
+        font-size: 18px;
+        width: 22px;
+        height: 22px;
+    }
+}
+

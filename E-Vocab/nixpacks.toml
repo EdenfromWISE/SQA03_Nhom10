@@ -1,0 +1,11 @@
+[phases.setup]
+aptPkgs = [
+  "default-mysql-client",
+  "ffmpeg",
+  "libmysqlclient-dev"
+]
+
+[phases.build]
+cmds = [
+  "python manage.py createsuperuser --noinput || true"
+]

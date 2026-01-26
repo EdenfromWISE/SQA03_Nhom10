@@ -1,0 +1,15 @@
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary, #666);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: var(--primary-color, #4f46e5);
+}
+

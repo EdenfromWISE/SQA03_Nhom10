@@ -1,0 +1,89 @@
+.container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.container h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  transition: transform 0.2s ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+p {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+/* ----- màu nền từng badge ----- */
+.badge1 {
+  background: linear-gradient(90deg, #fef3c7, #fde68a);
+}
+
+.badge2 {
+  background: linear-gradient(90deg, #dcfce7, #bbf7d0);
+}
+
+.badge3 {
+  background: linear-gradient(90deg, #dbeafe, #bfdbfe);
+}
+
+.badge4 {
+  background: #f3f4f6;
+}
+.locked {
+  opacity: 0.6;
+  filter: grayscale(0.3);
+  background: #f3f4f6 !important;
+  box-shadow: none;
+  cursor: default;
+}
+
+.locked:hover {
+  transform: none;
+}

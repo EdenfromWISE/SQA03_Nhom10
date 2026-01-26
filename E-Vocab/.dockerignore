@@ -1,0 +1,120 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+venv/
+env/
+.venv/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+local_settings.py
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+
+# Data files (nếu không cần trong production)
+data/
+*.csv
+*.json
+
+
+# Model files (nếu không cần trong build)
+chatbot/entity_model/
+chatbot/intent_model.joblib
+*.joblib
+*.pkl
+*.h5
+*.ckpt
+
+# Documentation
+*.md
+!README.md
+docs/
+*.txt
+!requirements.txt
+!Procfile
+!runtime.txt
+
+# Test files
+tests/
+test_*.py
+*_test.py
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node modules (nếu có)
+node_modules/
+npm-debug.log
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# PyTorch và ML cache
+.cache/
+.huggingface/
+transformers_cache/
+*.bin
+*.safetensors
+
+# NLTK data
+nltk_data/
+
+# Pip cache
+.pip/
+pip-log.txt
+
+# Build artifacts
+*.whl
+*.tar.gz
+
+# Python bytecode
+*.pyc
+*.pyo
+*.pyd

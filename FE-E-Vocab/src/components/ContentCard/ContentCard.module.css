@@ -1,0 +1,302 @@
+/* =======================================
+   CONTENT CARD - Gradient Background Style
+======================================= */
+
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.35s ease;
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Glow border effect */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4),
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.2)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 30px rgba(100, 100, 100, 0.2);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* ---- Background Layer ---- */
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .bgImage {
+  transform: scale(1.1);
+}
+
+/* Gradient overlay - xám đen */
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(17, 17, 17, 0.95) 0%,
+    rgba(38, 38, 38, 0.9) 50%,
+    rgba(64, 64, 64, 0.85) 100%
+  );
+  transition: opacity 0.35s ease;
+}
+
+.card:hover .gradient {
+  opacity: 0.7;
+}
+
+/* Nếu có ảnh, gradient nhẹ hơn để thấy ảnh */
+.bgImage + .gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(17, 17, 17, 0.8) 0%,
+    rgba(38, 38, 38, 0.65) 50%,
+    rgba(64, 64, 64, 0.5) 100%
+  );
+}
+
+/* ---- Content Area ---- */
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 20px;
+}
+
+.textArea {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .title {
+  transform: translateX(4px);
+}
+
+.meta {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: transform 0.3s ease 0.05s, opacity 0.3s ease;
+}
+
+.card:hover .meta {
+  transform: translateX(4px);
+}
+
+/* ---- Progress Badge ---- */
+.progressBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.progressBadge.completed {
+  background: rgba(46, 191, 102, 0.25);
+  color: #2EBF66;
+  border: 1px solid rgba(46, 191, 102, 0.4);
+}
+
+.progressBadge.in_progress {
+  background: rgba(255, 165, 0, 0.25);
+  color: #FFA500;
+  border: 1px solid rgba(255, 165, 0, 0.4);
+}
+
+.progressBadge.not_started {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---- Favorite Button ---- */
+.favoriteBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.favoriteBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.heartIcon {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  stroke-width: 2;
+  fill: none;
+  transition: all 0.25s ease;
+}
+
+.favoriteBtn.active .heartIcon {
+  fill: #2EBF66;
+  stroke: #2EBF66;
+  animation: heartBeat 0.4s ease;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.3); }
+  50% { transform: scale(0.9); }
+  75% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* =======================================
+   ANIMATION
+======================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(100, 100, 100, 0.2);
+  }
+}
+
+/* Optional: Add subtle pulse on idle */
+.card:not(:hover) {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both,
+             pulse 3s ease-in-out infinite 1s;
+}
+
+/* Animation delay for cards */
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.10s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.20s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6) { animation-delay: 0.30s; }
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+@media (max-width: 640px) {
+  .card {
+    height: 150px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .content {
+    padding: 12px 16px;
+  }
+
+  .favoriteBtn {
+    width: 32px;
+    height: 32px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .heartIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .progressBadge {
+    font-size: 10px;
+    padding: 3px 8px;
+    top: 10px;
+    left: 10px;
+  }
+}

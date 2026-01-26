@@ -1,0 +1,178 @@
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th {
+  text-align: left;
+  padding: 10px;
+  color: #6b7280;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+td {
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.clickableRow {
+  transition: background-color 0.2s;
+}
+
+.clickableRow:hover {
+  background-color: #f9fafb;
+}
+
+.word {
+  font-weight: 600;
+  display: block;
+}
+
+.phonetic {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.confidenceBar {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  height: 6px;
+  width: 80px;
+  overflow: hidden;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.barFill {
+  background-color: #8ddf82;
+  height: 100%;
+}
+
+.confText {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.statusCell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.statusDone {
+  background-color: #dcfce7;   /* nền xanh lá nhạt */
+  color: #15803d;              /* chữ xanh lá đậm */
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 9999px;       /* bo tròn kiểu pill */
+  font-size: 13px;
+  display: inline-block;
+}
+
+.statusLearning {
+  background-color: #fef3c7;   /* nền vàng nhạt */
+  color: #b45309;              /* chữ vàng đậm */
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+=============================== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 14px;
+  }
+
+  .container h3 {
+    font-size: 15px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .word {
+    font-size: 13px;
+  }
+
+  .phonetic {
+    font-size: 12px;
+  }
+
+  .confidenceBar {
+    width: 60px;
+  }
+
+  .confText {
+    font-size: 12px;
+  }
+
+  .statusDone,
+  .statusLearning {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .container h3 {
+    font-size: 14px;
+  }
+
+  .table {
+    font-size: 11px;
+  }
+
+  th, td {
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+
+  .word {
+    font-size: 12px;
+  }
+
+  .phonetic {
+    font-size: 11px;
+  }
+
+  .confidenceBar {
+    width: 50px;
+    height: 5px;
+  }
+
+  .confText {
+    font-size: 11px;
+  }
+
+  .statusDone,
+  .statusLearning {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}

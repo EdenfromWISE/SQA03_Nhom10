@@ -1,0 +1,240 @@
+.container {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  color: #10b981;
+}
+
+.headerLeft h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.reviewButton {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+}
+
+.reviewButton:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(5, 150, 105, 0.35);
+}
+
+.reviewButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dayRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dayRow:last-child {
+  border-bottom: none;
+}
+
+.dayRow:hover {
+  background-color: #f9fafb;
+  margin: 0 -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 8px;
+}
+
+.dayInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 100px;
+  max-width: 120px;
+  flex-shrink: 0;
+}
+
+.dayOfWeek {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.count {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.wordsPreview {
+  flex: 1;
+  font-size: 14px;
+  color: #4b5563;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.6;
+  min-width: 0;
+}
+
+.emptyState {
+  padding: 16px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Scrollbar styling */
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+=============================== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .headerLeft h3 {
+    font-size: 15px;
+  }
+
+  .reviewButton {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  .dayRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 14px 0;
+  }
+
+  .dayInfo {
+    min-width: auto;
+  }
+
+  .dayOfWeek {
+    font-size: 14px;
+  }
+
+  .count {
+    font-size: 12px;
+  }
+
+  .wordsPreview {
+    font-size: 13px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 14px;
+  }
+
+  .headerLeft h3 {
+    font-size: 14px;
+  }
+
+  .reviewButton {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .dayRow {
+    padding: 12px 0;
+  }
+
+  .dayOfWeek {
+    font-size: 13px;
+  }
+
+  .count {
+    font-size: 11px;
+  }
+
+  .wordsPreview {
+    font-size: 12px;
+  }
+
+  .emptyState {
+    font-size: 12px;
+  }
+}
+
