@@ -1,0 +1,39 @@
+[run]
+source =
+    students
+    vocabulary
+    progress
+    chatbot
+    learning
+
+omit =
+    # Migrations (auto-generated)
+    */migrations/*
+    # Config/entrypoint files
+    */admin.py
+    */apps.py
+    */urls.py
+    # Old empty test stubs
+    students/tests.py
+    vocabulary/tests.py
+    learning/tests.py
+    # NOT in scope: ML/AI/NLU
+    chatbot/nlu.py
+    chatbot/train_intent_model.py
+    learning/services/pronunciation_ai.py
+    # NOT in scope: ETL management commands
+    vocabulary/management/commands/*.py
+    vocabulary/management/__init__.py
+    vocabulary/management/commands/__init__.py
+    # NOT in scope: learning/views.py (plan covers services only)
+    learning/views.py
+    learning/serializers.py
+    # NOT in scope: students/serializers.py (registration, not in plan)
+    students/serializers.py
+    # Test files themselves
+    */tests/*
+    conftest.py
+
+[report]
+show_missing = True
+skip_covered = False
