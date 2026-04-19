@@ -54,10 +54,12 @@ function ProfilePage() {
         }
         const fetchUser = async () => {
             try {
-                // Sử dụng endpoint USER_UPDATE để lấy thông tin đầy đủ (bao gồm age)
-                const res = await axios.get(env.API_ENDPOINTS.AUTH.USER_UPDATE, {
+                // Sử dụng endpoint USER để lấy thông tin đầy đủ (bao gồm age)
+                const res = await axios.get(env.API_ENDPOINTS.AUTH.USER, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
+                console.log('Fetch user response:', res.data); // Debug log
+                console.log('Age from fetch:', res.data.age); // Debug log
                 setUser(res.data);
                 setEditForm({
                     first_name: res.data.first_name || '',
@@ -180,11 +182,13 @@ function ProfilePage() {
             const res = await axios.patch(env.API_ENDPOINTS.AUTH.USER_UPDATE, payload, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
+            console.log('Update response:', res.data); // Debug log
+            console.log('Age from response:', res.data.age); // Debug log
             setUser(res.data);
             setIsEditing(false);
             // Cập nhật age từ response
             setAge(res.data.age || '');
-            showToast('Cập nhật thông tin thành công!', 'success');
+            console.log('Age state after update:', res.data.age || ''); // Debug log
         } catch (e) {
             if (e?.response?.status === 400) {
                 // Xử lý các lỗi validation từ backend
@@ -277,7 +281,7 @@ function ProfilePage() {
                 // Revert lại giá trị cũ nếu lỗi
                 const token = localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken');
                 try {
-                    const res = await axios.get(env.API_ENDPOINTS.AUTH.USER_UPDATE, {
+                    const res = await axios.get(env.API_ENDPOINTS.AUTH.USER, {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     setNotifications({

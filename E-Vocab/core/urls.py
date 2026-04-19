@@ -4,6 +4,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # Allauth URLs for social login
+    path('accounts/', include('allauth.urls')),
+
     # URLs cho API từ vựng
     path('api/vocabulary/', include('vocabulary.urls')),
     path('api/progress/', include('progress.urls')),

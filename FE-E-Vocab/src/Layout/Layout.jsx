@@ -31,7 +31,7 @@ export default function Layout() {
       }
       
       try {
-        const res = await axios.get(env.API_ENDPOINTS.AUTH.USER_UPDATE, {
+        const res = await axios.get(env.API_ENDPOINTS.AUTH.USER, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         setUserAvatar(res.data.avatar_url || null);
@@ -63,7 +63,7 @@ export default function Layout() {
         // Nếu không có avatar_url trong event, refetch user info
         const token = localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken');
         if (token) {
-          axios.get(env.API_ENDPOINTS.AUTH.USER_UPDATE, {
+          axios.get(env.API_ENDPOINTS.AUTH.USER, {
             headers: { 'Authorization': `Bearer ${token}` }
           }).then(res => {
             setUserAvatar(res.data.avatar_url || null);

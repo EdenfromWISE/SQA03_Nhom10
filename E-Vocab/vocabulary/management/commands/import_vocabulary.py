@@ -46,10 +46,10 @@ class Command(BaseCommand):
                             'pronunciation': row.get('pronunciation', ''),
                             'word_type': row.get('word_type', ''),
                             'meaning': row.get('meaning', ''),
-                            'example_sentence': row.get('example_en', ''),
-                            'example_meaning': row.get('example_vi', ''),
-                            'image': row.get('image_url', ''),
-                            'audio': row.get('audio_url', '')
+                            'example_en': row.get('example_en', ''),
+                            'example_vi': row.get('example_vi', ''),
+                            'audio_url': row.get('audio_url', ''),
+                            'image_url': row.get('image_url', ''),
                         }
                     )
                     count += 1

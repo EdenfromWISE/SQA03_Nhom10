@@ -13,6 +13,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import send_mail
 from django.urls import reverse
+from rest_framework.generics import UpdateAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import serializers
+from .models import UserProfile
 
 User = get_user_model()
 
@@ -166,3 +170,61 @@ class PasswordResetConfirmView(APIView):
         user.set_password(new_password)
         user.save()
         return Response({'message': 'Password has been reset successfully.'})
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    age = serializers.IntegerField(required=False, allow_null=True)
+    avatar = serializers.ImageField(required=False, allow_null=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name', 'age', 'avatar']
+
+    def update(self, instance, validated_data):
+        age = validated_data.pop('age', None)
+        avatar = validated_data.pop('avatar', None)
+        user = super().update(instance, validated_data)
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        if age is not None:
+            profile.age = age
+        if avatar is not None:
+            profile.avatar = avatar
+        profile.save()
+        return user
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        try:
+            profile = instance.userprofile
+            data['age'] = profile.age
+            if profile.avatar:
+                data['avatar'] = profile.avatar.url
+            else:
+                data['avatar'] = None
+        except UserProfile.DoesNotExist:
+            data['age'] = None
+            data['avatar'] = None
+        return data
+
+
+class UserUpdateView(UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserUpdateSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+
+class UserAvatarView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        avatar = request.FILES.get('avatar')
+        if avatar:
+            profile.avatar = avatar
+            profile.save()
+            return Response({'avatar': profile.avatar.url}, status=status.HTTP_200_OK)
+        return Response({'error': 'No avatar provided'}, status=status.HTTP_400_BAD_REQUEST)

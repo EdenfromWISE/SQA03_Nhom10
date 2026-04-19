@@ -110,7 +110,8 @@ function RegisterPage() {
             // Gửi thông tin đến API đăng ký của Django (chỉ email và password)
             const response = await axios.post(env.API_ENDPOINTS.AUTH.REGISTER, {
                 email: email,
-                password: password,
+                username: email,  // Thêm dòng này
+                password1: password,
                 password2: password2
             });
 

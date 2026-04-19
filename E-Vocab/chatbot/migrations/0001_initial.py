@@ -36,10 +36,10 @@ class Migration(migrations.Migration):
             model_name='chatmessage',
             index=models.Index(fields=['user', 'timestamp'], name='chatbot_cha_user_id_timestamp_idx'),
         ),
-        # Set charset utf8mb4 để hỗ trợ emoji và ký tự đặc biệt
-        migrations.RunSQL(
-            sql="ALTER TABLE chatbot_chatmessage CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;",
-            reverse_sql=migrations.RunSQL.noop,
-        ),
+        # Set charset utf8mb4 để hỗ trợ emoji và ký tự đặc biệt (bỏ qua cho SQLite)
+        # migrations.RunSQL(
+        #     sql="ALTER TABLE chatbot_chatmessage CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;",
+        #     reverse_sql=migrations.RunSQL.noop,
+        # ),
     ]
 

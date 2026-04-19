@@ -1,8 +1,10 @@
 from django.db import models
 from solo.models import SingletonModel
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from vocabulary.models import Topic, Vocabulary
+
+User = get_user_model()
 
 class LearningConfig(SingletonModel):
     """Cấu hình chung."""

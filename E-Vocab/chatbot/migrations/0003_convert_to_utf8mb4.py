@@ -10,17 +10,17 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # Convert table và tất cả text columns sang utf8mb4
-        migrations.RunSQL(
-            sql="""
-                ALTER TABLE chatbot_chatmessage CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-                ALTER TABLE chatbot_chatmessage MODIFY content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-                ALTER TABLE chatbot_chatmessage MODIFY message_type VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-                ALTER TABLE chatbot_chatmessage MODIFY audio_url VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-                ALTER TABLE chatbot_chatmessage MODIFY word VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-                ALTER TABLE chatbot_chatmessage MODIFY phonetic VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-            """,
-            reverse_sql=migrations.RunSQL.noop,
-        ),
+        # Convert table và tất cả text columns sang utf8mb4 (bỏ qua cho SQLite)
+        # migrations.RunSQL(
+        #     sql="""
+        #         ALTER TABLE chatbot_chatmessage CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        #         ALTER TABLE chatbot_chatmessage MODIFY content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        #         ALTER TABLE chatbot_chatmessage MODIFY message_type VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        #         ALTER TABLE chatbot_chatmessage MODIFY audio_url VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        #         ALTER TABLE chatbot_chatmessage MODIFY word VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        #         ALTER TABLE chatbot_chatmessage MODIFY phonetic VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        #     """,
+        #     reverse_sql=migrations.RunSQL.noop,
+        # ),
     ]
 

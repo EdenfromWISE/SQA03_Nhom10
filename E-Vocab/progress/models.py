@@ -1,8 +1,10 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
 
 from vocabulary.models import Course, Topic, Vocabulary
+
+User = get_user_model()
 
 
 class UserCourseProgress(models.Model):
