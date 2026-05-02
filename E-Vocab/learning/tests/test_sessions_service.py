@@ -4,15 +4,17 @@ Unit tests cho learning/services/sessions_service.py
 
 Test Cases:
     UT-LRN-SS-001 — create_practice_session: topic rỗng → ValueError
-    UT-LRN-SS-002 — create_review_session: không có từ due → ValueError
-    UT-LRN-SS-003 — create_review_session: total_questions > 20 → capped 20
-    UT-LRN-SS-004 — create_exam_session: vượt max daily exams → ValueError
-    UT-LRN-SS-005 — submit_answer: session đã completed → ValueError
-    UT-LRN-SS-006 — submit_answer: question_id không thuộc session → ValueError
-    UT-LRN-SS-007 — submit_answer: dict answer → lưu vào answer_text
-    UT-LRN-SS-008 — complete_session: tính score đúng, set completed_at
-    UT-LRN-SS-009 — cancel_session: session đã completed → ValueError
-    UT-LRN-SS-010 — complete_session exam: cập nhật UserTopicProgress
+    UT-LRN-SS-002 — create_practice_session: tạo LearningSession + Question hợp lệ
+    UT-LRN-SS-003 — create_review_session: không có từ due → ValueError
+    UT-LRN-SS-004 — create_review_session: total_questions > 20 → capped 20
+    UT-LRN-SS-005 — create_exam_session: vượt max daily exams → ValueError
+    UT-LRN-SS-006 — submit_answer: session đã completed → ValueError
+    UT-LRN-SS-007 — submit_answer: question_id không thuộc session → ValueError
+    UT-LRN-SS-008 — submit_answer: dict answer → lưu vào answer_text
+    UT-LRN-SS-009 — submit_answer: int answer → lưu vào selected_option
+    UT-LRN-SS-010 — complete_session: tính score đúng, set completed_at và is_passed
+    UT-LRN-SS-011 — cancel_session: session đã completed → ValueError
+    UT-LRN-SS-012 — complete_session exam: cập nhật UserTopicProgress
 
 Rollback: pytest-django tự động rollback toàn bộ thay đổi DB sau mỗi test.
 """
@@ -89,7 +91,11 @@ class TestCreatePracticeSession:
         # [CheckDB] Không có LearningSession nào được tạo khi lỗi
         assert LearningSession.objects.filter(user=user).count() == 0
 
-    def test_creates_session_with_questions(self, service, user, topic_with_vocab, config):
+    # ── UT-LRN-SS-002 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_002_creates_session_with_questions(
+        self, service, user, topic_with_vocab, config
+    ):
+        # TC: UT-LRN-SS-002 — create_practice_session tạo LearningSession và Questions trong DB
         # [Act]
         session = service.create_practice_session(user, topic_with_vocab)
 
@@ -111,9 +117,9 @@ class TestCreatePracticeSession:
 @pytest.mark.django_db
 class TestCreateReviewSession:
 
-    # ── UT-LRN-SS-002 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_002_no_due_vocab_raises_value_error(self, service, user, config):
-        # TC: UT-LRN-SS-002 — Không có từ vựng đến hạn → Raise ValueError
+    # ── UT-LRN-SS-003 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_003_no_due_vocab_raises_value_error(self, service, user, config):
+        # TC: UT-LRN-SS-003 — Không có từ vựng đến hạn → Raise ValueError
         # [CheckDB] Xác nhận không có UserVocabularyMastery nào đến hạn
         assert UserVocabularyMastery.objects.filter(user=user).count() == 0
 
@@ -124,9 +130,9 @@ class TestCreateReviewSession:
         # [CheckDB] Không có session được tạo
         assert LearningSession.objects.filter(user=user, mode="review").count() == 0
 
-    # ── UT-LRN-SS-003 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_003_total_questions_capped_at_20(self, service, user, config):
-        # TC: UT-LRN-SS-003 — total_questions > 20 → session.total_questions <= 20
+    # ── UT-LRN-SS-004 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_004_total_questions_capped_at_20(self, service, user, config):
+        # TC: UT-LRN-SS-004 — total_questions > 20 → session.total_questions <= 20
         # [Arrange] Tạo 25 từ với mastery đến hạn
         course = Course.objects.create(title="Review Course")
         topic  = Topic.objects.create(course=course, title="Review Topic")
@@ -159,11 +165,11 @@ class TestCreateReviewSession:
 @pytest.mark.django_db
 class TestCreateExamSession:
 
-    # ── UT-LRN-SS-004 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_004_max_daily_exams_exceeded_raises_value_error(
+    # ── UT-LRN-SS-005 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_005_max_daily_exams_exceeded_raises_value_error(
         self, service, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-004 — Đã đủ max_daily_exams_per_topic → Raise ValueError
+        # TC: UT-LRN-SS-005 — Đã đủ max_daily_exams_per_topic → Raise ValueError
         # [Arrange] Tạo 1 exam session hôm nay (max = 1)
         LearningSession.objects.create(
             user=user,
@@ -201,11 +207,11 @@ class TestSubmitAnswer:
         question = session.questions.first()
         return session, question, svc
 
-    # ── UT-LRN-SS-005 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_005_completed_session_raises_value_error(
+    # ── UT-LRN-SS-006 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_006_completed_session_raises_value_error(
         self, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-005 — Session đã completed → submit_answer raise ValueError
+        # TC: UT-LRN-SS-006 — Session đã completed → submit_answer raise ValueError
         # [Arrange] Tạo session rồi đánh dấu completed
         session, question, svc = self._create_session_with_question(
             user, topic_with_vocab, config
@@ -220,11 +226,11 @@ class TestSubmitAnswer:
         with pytest.raises(ValueError, match="hoàn thành"):
             svc.submit_answer(session, question.id, 0)
 
-    # ── UT-LRN-SS-006 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_006_invalid_question_id_raises_value_error(
+    # ── UT-LRN-SS-007 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_007_invalid_question_id_raises_value_error(
         self, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-006 — question_id không thuộc session → ValueError
+        # TC: UT-LRN-SS-007 — question_id không thuộc session → ValueError
         # [Arrange]
         session, _, svc = self._create_session_with_question(
             user, topic_with_vocab, config
@@ -235,11 +241,11 @@ class TestSubmitAnswer:
         with pytest.raises(ValueError, match="không tồn tại"):
             svc.submit_answer(session, nonexistent_question_id, 0)
 
-    # ── UT-LRN-SS-007 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_007_dict_answer_saved_as_answer_text(
+    # ── UT-LRN-SS-008 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_008_dict_answer_saved_as_answer_text(
         self, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-007 — answer kiểu dict → lưu vào answer_text, selected_option=None
+        # TC: UT-LRN-SS-008 — answer kiểu dict → lưu vào answer_text, selected_option=None
         # [Arrange]
         session, question, svc = self._create_session_with_question(
             user, topic_with_vocab, config
@@ -255,9 +261,11 @@ class TestSubmitAnswer:
         assert user_answer.selected_option is None, "selected_option phải None với dict answer"
         # [Rollback] UserAnswer sẽ bị rollback cùng session sau test
 
-    def test_submit_int_answer_saved_as_selected_option(
+    # ── UT-LRN-SS-009 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_009_submit_int_answer_saved_as_selected_option(
         self, user, topic_with_vocab, config
     ):
+        # TC: UT-LRN-SS-009 — answer kiểu int → lưu vào selected_option, answer_text=None
         # [Arrange] int answer → dùng cho reading/listening (chọn index)
         session, question, svc = self._create_session_with_question(
             user, topic_with_vocab, config
@@ -270,6 +278,7 @@ class TestSubmitAnswer:
         user_answer = UserAnswer.objects.get(session=session, question=question)
         assert user_answer.selected_option is not None
         assert user_answer.answer_text is None
+        # [Rollback] UserAnswer sẽ bị rollback cùng session sau test
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -287,11 +296,11 @@ class TestCompleteAndCancelSession:
             svc.submit_answer(session, q.id, "word0")  # trả lời dạng string
         return session, svc
 
-    # ── UT-LRN-SS-008 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_008_complete_session_calculates_score_and_sets_completed_at(
+    # ── UT-LRN-SS-010 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_010_complete_session_calculates_score_and_sets_completed_at(
         self, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-008 — complete_session tính score đúng, set completed_at
+        # TC: UT-LRN-SS-010 — complete_session tính score đúng, set completed_at và is_passed
         # [Arrange]
         session, svc = self._make_answered_session(user, topic_with_vocab, config)
         assert session.completed_at is None  # chưa completed
@@ -312,11 +321,11 @@ class TestCompleteAndCancelSession:
         assert db_session.score is not None,        "score phải được lưu vào DB"
         # [Rollback] LearningSession changes sẽ bị rollback sau test
 
-    # ── UT-LRN-SS-009 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_009_cancel_completed_session_raises_value_error(
+    # ── UT-LRN-SS-011 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_011_cancel_completed_session_raises_value_error(
         self, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-009 — Hủy session đã hoàn thành → ValueError
+        # TC: UT-LRN-SS-011 — Hủy session đã hoàn thành → ValueError
         # [Arrange]
         session, svc = self._make_answered_session(user, topic_with_vocab, config)
         svc.complete_session(session)
@@ -331,11 +340,11 @@ class TestCompleteAndCancelSession:
         # [CheckDB] Session vẫn tồn tại sau khi cancel thất bại
         assert LearningSession.objects.filter(pk=session.pk).exists()
 
-    # ── UT-LRN-SS-010 ──────────────────────────────────────────────────────
-    def test_UT_LRN_SS_010_exam_session_updates_user_topic_progress(
+    # ── UT-LRN-SS-012 ──────────────────────────────────────────────────────
+    def test_UT_LRN_SS_012_exam_session_updates_user_topic_progress(
         self, user, topic_with_vocab, config
     ):
-        # TC: UT-LRN-SS-010 — complete_session mode exam → tạo/cập nhật UserTopicProgress
+        # TC: UT-LRN-SS-012 — complete_session mode exam → tạo/cập nhật UserTopicProgress
         # [CheckDB] Chưa có UserTopicProgress trước khi thi
         assert not UserTopicProgress.objects.filter(
             user=user, topic=topic_with_vocab

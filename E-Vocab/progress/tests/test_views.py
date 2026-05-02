@@ -4,9 +4,16 @@ Unit tests cho progress/views.py
 
 Test Cases:
     UT-PRG-VIEW-001 — UpcomingReviewAPIView: từ quá hạn được nhóm vào ngày hôm nay
-    UT-PRG-VIEW-002 — OverviewAPIView: trả đủ 4 chỉ số
-    UT-PRG-VIEW-003 — DailyProgressAPIView: luôn trả 7 mục T2..CN
-    UT-PRG-VIEW-004 — RecentSessionsAPIView: mỗi session item đúng key contract
+    UT-PRG-VIEW-002 — UpcomingReviewAPIView: không có mastery → tất cả count = 0
+    UT-PRG-VIEW-003 — OverviewAPIView: trả đủ 4 chỉ số contract
+    UT-PRG-VIEW-004 — OverviewAPIView: total_learned_count phản ánh đúng số mastery
+    UT-PRG-VIEW-005 — DailyProgressAPIView: luôn trả 7 mục T2..CN
+    UT-PRG-VIEW-006 — DailyProgressAPIView: words field >= 0
+    UT-PRG-VIEW-007 — RecentSessionsAPIView: mỗi session item đúng key contract
+    UT-PRG-VIEW-008 — RecentSessionsAPIView: chỉ trả session đã completed_at
+    UT-PRG-VIEW-009 — RecentSessionsAPIView: không vượt quá limit mặc định 7
+    UT-PRG-VIEW-010 — StreakAPIView: trả current_streak/longest_streak/calendar
+    UT-PRG-VIEW-011 — StreakAPIView: calendar.days đúng số ngày trong tháng hiện tại
 
 Rollback: pytest-django tự động rollback toàn bộ thay đổi DB sau mỗi test.
 """
@@ -87,8 +94,12 @@ class TestUpcomingReviewAPIView:
         assert today_entry["count"] >= 1, "Từ quá hạn phải được nhóm vào ngày hôm nay"
         # [Rollback] UserVocabularyMastery sẽ bị rollback sau test
 
-    def test_upcoming_review_empty_when_no_mastery(self, force_client):
+    # ── UT-PRG-VIEW-002 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_002_upcoming_review_empty_when_no_mastery(self, force_client):
+        # TC: UT-PRG-VIEW-002 — Không có mastery trong DB → tất cả count = 0
         # [CheckDB] Xác nhận không có mastery trong DB
+        assert UserVocabularyMastery.objects.count() == 0
+
         # [Act]
         response = force_client.get(UPCOMING_URL)
 
@@ -105,9 +116,9 @@ class TestUpcomingReviewAPIView:
 @pytest.mark.django_db
 class TestOverviewAPIView:
 
-    # ── UT-PRG-VIEW-002 ────────────────────────────────────────────────────
-    def test_UT_PRG_VIEW_002_overview_returns_four_required_keys(self, force_client):
-        # TC: UT-PRG-VIEW-002 — OverviewAPIView trả đủ 4 chỉ số theo contract
+    # ── UT-PRG-VIEW-003 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_003_overview_returns_four_required_keys(self, force_client):
+        # TC: UT-PRG-VIEW-003 — OverviewAPIView trả đủ 4 chỉ số theo contract
         # [Act]
         response = force_client.get(OVERVIEW_URL)
 
@@ -121,9 +132,11 @@ class TestOverviewAPIView:
         ):
             assert key in response.data, f"OverviewAPIView thiếu field: {key}"
 
-    def test_overview_total_learned_count_reflects_mastery_objects(
+    # ── UT-PRG-VIEW-004 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_004_overview_total_learned_count_reflects_mastery_objects(
         self, force_client, user, vocab_pair
     ):
+        # TC: UT-PRG-VIEW-004 — total_learned_count phản ánh đúng số UserVocabularyMastery của user
         # [Arrange] Tạo 2 mastery cho user
         _, v1, v2 = vocab_pair
         UserVocabularyMastery.objects.create(user=user, vocabulary=v1)
@@ -147,11 +160,11 @@ class TestOverviewAPIView:
 @pytest.mark.django_db
 class TestDailyProgressAPIView:
 
-    # ── UT-PRG-VIEW-003 ────────────────────────────────────────────────────
-    def test_UT_PRG_VIEW_003_daily_progress_returns_7_items_with_correct_labels(
+    # ── UT-PRG-VIEW-005 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_005_daily_progress_returns_7_items_with_correct_labels(
         self, force_client
     ):
-        # TC: UT-PRG-VIEW-003 — DailyProgressAPIView luôn trả 7 mục T2 → CN
+        # TC: UT-PRG-VIEW-005 — DailyProgressAPIView luôn trả 7 mục T2 → CN
         # [Act]
         response = force_client.get(DAILY_PROGRESS_URL)
 
@@ -162,7 +175,9 @@ class TestDailyProgressAPIView:
         labels = [item["day"] for item in data]
         assert labels == ["T2", "T3", "T4", "T5", "T6", "T7", "CN"]
 
-    def test_daily_progress_words_field_is_non_negative(self, force_client):
+    # ── UT-PRG-VIEW-006 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_006_daily_progress_words_field_is_non_negative(self, force_client):
+        # TC: UT-PRG-VIEW-006 — Số từ mỗi ngày trong DailyProgressAPIView phải >= 0
         # [Act]
         response = force_client.get(DAILY_PROGRESS_URL)
 
@@ -178,11 +193,11 @@ class TestDailyProgressAPIView:
 @pytest.mark.django_db
 class TestRecentSessionsAPIView:
 
-    # ── UT-PRG-VIEW-004 ────────────────────────────────────────────────────
-    def test_UT_PRG_VIEW_004_recent_sessions_format_contract(
+    # ── UT-PRG-VIEW-007 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_007_recent_sessions_format_contract(
         self, force_client, user, vocab_pair
     ):
-        # TC: UT-PRG-VIEW-004 — Mỗi session item có đúng các key theo contract
+        # TC: UT-PRG-VIEW-007 — Mỗi session item có đúng các key theo contract
         # [Arrange] Tạo 1 completed session
         topic, _, _ = vocab_pair
         now = timezone.now()
@@ -206,7 +221,11 @@ class TestRecentSessionsAPIView:
             assert key in item, f"RecentSessionsAPIView thiếu key: {key}"
         # [Rollback] LearningSession sẽ bị rollback sau test
 
-    def test_recent_sessions_only_returns_completed(self, force_client, user, vocab_pair):
+    # ── UT-PRG-VIEW-008 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_008_recent_sessions_only_returns_completed(
+        self, force_client, user, vocab_pair
+    ):
+        # TC: UT-PRG-VIEW-008 — RecentSessionsAPIView chỉ trả session đã completed_at, không trả session đang dở
         # [Arrange] Tạo session chưa completed (completed_at=None)
         topic, _, _ = vocab_pair
         LearningSession.objects.create(
@@ -222,8 +241,13 @@ class TestRecentSessionsAPIView:
         response = force_client.get(RECENT_SESSIONS_URL)
         assert response.status_code == 200
         assert len(response.data) == 0, "Session chưa completed không được trả"
+        # [Rollback] LearningSession sẽ bị rollback sau test
 
-    def test_recent_sessions_returns_at_most_limit(self, force_client, user, vocab_pair):
+    # ── UT-PRG-VIEW-009 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_009_recent_sessions_returns_at_most_limit(
+        self, force_client, user, vocab_pair
+    ):
+        # TC: UT-PRG-VIEW-009 — RecentSessionsAPIView không trả quá limit mặc định 7
         # [Arrange] Tạo 10 completed sessions
         topic, _, _ = vocab_pair
         now = timezone.now()
@@ -250,8 +274,9 @@ class TestRecentSessionsAPIView:
 @pytest.mark.django_db
 class TestStreakAPIView:
 
-    def test_UT_PRG_STK_streak_api_returns_streak_data(self, force_client):
-        # TC: UT-PRG-VIEW-005 — StreakAPIView trả current_streak, longest_streak, calendar
+    # ── UT-PRG-VIEW-010 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_010_streak_api_returns_streak_data(self, force_client):
+        # TC: UT-PRG-VIEW-010 — StreakAPIView trả current_streak, longest_streak, calendar
         # [Act]
         response = force_client.get(STREAK_URL)
 
@@ -260,7 +285,9 @@ class TestStreakAPIView:
         for key in ("current_streak", "longest_streak", "calendar"):
             assert key in response.data, f"StreakAPIView thiếu key: {key}"
 
-    def test_streak_api_calendar_has_correct_day_count(self, force_client):
+    # ── UT-PRG-VIEW-011 ────────────────────────────────────────────────────
+    def test_UT_PRG_VIEW_011_streak_api_calendar_has_correct_day_count(self, force_client):
+        # TC: UT-PRG-VIEW-011 — StreakAPIView.calendar.days đúng số ngày trong tháng hiện tại
         # [Arrange] Lấy số ngày đúng của tháng hiện tại để so sánh
         import calendar as cal_module
         from django.utils import timezone as tz

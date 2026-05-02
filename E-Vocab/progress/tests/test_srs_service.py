@@ -4,10 +4,13 @@ Unit tests cho progress/services/srs_service.py (thuật toán SM-2)
 
 Test Cases:
     UT-PRG-SM2-001 — is_vocabulary_eligible: từ mới chưa có mastery → True
-    UT-PRG-SM2-002 — update_review: chưa đến hạn, không force → trả None
-    UT-PRG-SM2-003 — update_review: trả lời đúng → repetitions tăng, interval tăng
-    UT-PRG-SM2-004 — update_review: trả lời sai → repetitions=0, interval=1
-    UT-PRG-SM2-005 — get_vocabularies_due_for_review: chỉ trả từ đến hạn, đúng thứ tự
+    UT-PRG-SM2-002 — is_vocabulary_eligible: mastery có next_review_date=None → True
+    UT-PRG-SM2-003 — is_vocabulary_eligible: mastery có next_review_date trong tương lai → False
+    UT-PRG-SM2-004 — update_review: chưa đến hạn, không force → trả None
+    UT-PRG-SM2-005 — update_review: trả lời đúng → repetitions tăng, interval tăng
+    UT-PRG-SM2-006 — update_review: trả lời sai → repetitions=0, interval=1
+    UT-PRG-SM2-007 — update_review: ease_factor không được < 1.3 dù sai nhiều lần
+    UT-PRG-SM2-008 — get_vocabularies_due_for_review: chỉ trả từ đến hạn, đúng thứ tự
 
 Rollback: pytest-django tự động rollback toàn bộ thay đổi DB sau mỗi test.
 """
@@ -64,7 +67,9 @@ class TestIsVocabularyEligibleForSrs:
         # [Assert]
         assert result is True
 
-    def test_vocab_with_null_next_review_is_eligible(self, user, vocab):
+    # ── UT-PRG-SM2-002 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_002_vocab_with_null_next_review_is_eligible(self, user, vocab):
+        # TC: UT-PRG-SM2-002 — Mastery có next_review_date=None (từ mới học chưa lên lịch) → eligible = True
         # [Arrange] Tạo mastery với next_review_date=None (từ mới học chưa lên lịch)
         UserVocabularyMastery.objects.create(
             user=user, vocabulary=vocab, next_review_date=None
@@ -78,7 +83,9 @@ class TestIsVocabularyEligibleForSrs:
         # [Act & Assert]
         assert SM2Service.is_vocabulary_eligible_for_srs(user, vocab) is True
 
-    def test_vocab_not_yet_due_is_not_eligible(self, user, vocab):
+    # ── UT-PRG-SM2-003 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_003_vocab_not_yet_due_is_not_eligible(self, user, vocab):
+        # TC: UT-PRG-SM2-003 — Mastery có next_review_date trong tương lai → eligible = False
         # [Arrange] next_review_date trong tương lai → chưa đến hạn
         future = timezone.now() + timedelta(days=5)
         UserVocabularyMastery.objects.create(
@@ -97,9 +104,9 @@ class TestIsVocabularyEligibleForSrs:
 class TestUpdateReview:
     """Kiểm thử SM2Service.update_review — cập nhật interval/repetitions."""
 
-    # ── UT-PRG-SM2-002 ─────────────────────────────────────────────────────
-    def test_UT_PRG_SM2_002_update_review_returns_none_when_not_due(self, user, vocab):
-        # TC: UT-PRG-SM2-002 — Chưa đến hạn, force_update=False → trả None
+    # ── UT-PRG-SM2-004 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_004_update_review_returns_none_when_not_due(self, user, vocab):
+        # TC: UT-PRG-SM2-004 — Chưa đến hạn, force_update=False → trả None
         # [Arrange] next_review_date 3 ngày nữa
         future = timezone.now() + timedelta(days=3)
         mastery_before = UserVocabularyMastery.objects.create(
@@ -117,11 +124,11 @@ class TestUpdateReview:
         mastery_after = UserVocabularyMastery.objects.get(user=user, vocabulary=vocab)
         assert mastery_after.repetitions == initial_repetitions
 
-    # ── UT-PRG-SM2-003 ─────────────────────────────────────────────────────
-    def test_UT_PRG_SM2_003_correct_answer_increases_repetitions_and_interval(
+    # ── UT-PRG-SM2-005 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_005_correct_answer_increases_repetitions_and_interval(
         self, user, vocab
     ):
-        # TC: UT-PRG-SM2-003 — Trả lời đúng → repetitions tăng, interval tăng, EF >= 1.3
+        # TC: UT-PRG-SM2-005 — Trả lời đúng → repetitions tăng, interval tăng, EF >= 1.3
         # [Arrange] repetitions=2 → sẽ vào nhánh else: interval = int(interval * ef)
         past = timezone.now() - timedelta(days=1)
         initial_interval    = 6
@@ -150,11 +157,11 @@ class TestUpdateReview:
         assert db_mastery.repetitions == initial_repetitions + 1
         assert db_mastery.correct_count == 1
 
-    # ── UT-PRG-SM2-004 ─────────────────────────────────────────────────────
-    def test_UT_PRG_SM2_004_wrong_answer_resets_repetitions_and_interval(
+    # ── UT-PRG-SM2-006 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_006_wrong_answer_resets_repetitions_and_interval(
         self, user, vocab
     ):
-        # TC: UT-PRG-SM2-004 — Trả lời sai → repetitions=0, interval=1
+        # TC: UT-PRG-SM2-006 — Trả lời sai → repetitions=0, interval=1
         # [Arrange] User có streak dài, trả lời sai sẽ reset về đầu
         past = timezone.now() - timedelta(days=1)
         UserVocabularyMastery.objects.create(
@@ -179,8 +186,10 @@ class TestUpdateReview:
         assert db_mastery.repetitions == 0
         assert db_mastery.incorrect_count == 1
 
-    def test_ease_factor_clamped_at_1_3_minimum(self, user, vocab):
-        # [Arrange] EF thấp, trả lời sai nhiều lần → EF không được < 1.3
+    # ── UT-PRG-SM2-007 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_007_ease_factor_clamped_at_1_3_minimum(self, user, vocab):
+        # TC: UT-PRG-SM2-007 — Ease factor bị clamp tại 1.3 dù trả lời sai nhiều lần
+        # [Arrange] EF thấp (1.31), trả lời sai → EF không được < 1.3
         past = timezone.now() - timedelta(days=1)
         UserVocabularyMastery.objects.create(
             user=user, vocabulary=vocab, ease_factor=1.31, next_review_date=past
@@ -201,11 +210,11 @@ class TestUpdateReview:
 class TestGetVocabulariesDueForReview:
     """Kiểm thử SM2Service.get_vocabularies_due_for_review."""
 
-    # ── UT-PRG-SM2-005 ─────────────────────────────────────────────────────
-    def test_UT_PRG_SM2_005_returns_only_due_vocabularies_in_order(
+    # ── UT-PRG-SM2-008 ─────────────────────────────────────────────────────
+    def test_UT_PRG_SM2_008_returns_only_due_vocabularies_in_order(
         self, user, vocab, vocab2
     ):
-        # TC: UT-PRG-SM2-005 — Chỉ trả mastery đến hạn, đúng thứ tự next_review_date
+        # TC: UT-PRG-SM2-008 — Chỉ trả mastery đến hạn, đúng thứ tự next_review_date
         # [Arrange] Tạo 3 mastery: 2 quá hạn (thứ tự khác nhau) + 1 chưa đến hạn
         now    = timezone.now()
         past1  = now - timedelta(days=2)  # quá hạn nhất

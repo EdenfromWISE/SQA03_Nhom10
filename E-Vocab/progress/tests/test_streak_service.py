@@ -8,6 +8,7 @@ Test Cases:
     UT-PRG-STK-003 — Ngày liên tiếp tăng streak
     UT-PRG-STK-004 — Đứt chuỗi reset current streak
     UT-PRG-STK-005 — get_streak_calendar trả đúng số ngày trong tháng
+    UT-PRG-STK-006 — get_streak_calendar đánh dấu đúng ngày active từ DailyActivity
 
 Rollback: pytest-django tự động rollback toàn bộ thay đổi DB sau mỗi test.
 """
@@ -159,7 +160,9 @@ class TestGetStreakCalendar:
             f"Tháng {month}/{year} phải có {expected_days} ngày"
         )
 
-    def test_active_days_marked_correctly(self, user):
+    # ── UT-PRG-STK-006 ─────────────────────────────────────────────────────
+    def test_UT_PRG_STK_006_active_days_marked_correctly(self, user):
+        # TC: UT-PRG-STK-006 — Ngày có DailyActivity (is_active=True) phải được đánh dấu đúng trong calendar
         # [Arrange] Tạo DailyActivity cho 15/3/2024
         active_date = date(2024, 3, 15)
         DailyActivity.objects.create(user=user, date=active_date, is_active=True)
@@ -174,3 +177,4 @@ class TestGetStreakCalendar:
         day_map = {item["date"]: item["active"] for item in result["days"]}
         assert day_map[active_date] is True
         assert day_map[date(2024, 3, 1)] is False
+        # [Rollback] DailyActivity sẽ bị rollback sau test

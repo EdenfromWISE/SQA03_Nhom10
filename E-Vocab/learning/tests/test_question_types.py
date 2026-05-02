@@ -4,10 +4,27 @@ Unit tests cho learning/services/question_types/
 
 Test Cases:
     UT-LRN-QT-READ-001 — ReadingQuestionType.build_question: cấu trúc hợp lệ
-    UT-LRN-QT-READ-002 — ReadingQuestionType.evaluate_answer: đúng/sai
+    UT-LRN-QT-READ-002 — ReadingQuestionType.evaluate_answer: đáp án đúng → score=1.0
+    UT-LRN-QT-READ-003 — ReadingQuestionType.evaluate_answer: đáp án sai → score=0.0
+    UT-LRN-QT-READ-004 — ReadingQuestionType.requires_pool() trả True
     UT-LRN-QT-WR-001   — WritingQuestionType.build_question: canonical là lowercase/strip
     UT-LRN-QT-WR-002   — WritingQuestionType.evaluate_answer: chấp nhận case insensitive
+    UT-LRN-QT-WR-003   — WritingQuestionType.evaluate_answer: từ sai → score=0.0
+    UT-LRN-QT-WR-004   — WritingQuestionType.requires_pool() trả False
     UT-LRN-QT-SPK-001  — SpeakingQuestionType.evaluate_answer: assessor=None → False
+    UT-LRN-QT-SPK-002  — SpeakingQuestionType.evaluate_answer: float >= 70 → True
+    UT-LRN-QT-SPK-003  — SpeakingQuestionType.evaluate_answer: float < 70 → False
+    UT-LRN-QT-SPK-004  — SpeakingQuestionType.evaluate_answer: int treated as score
+    UT-LRN-QT-SPK-005  — SpeakingQuestionType.evaluate_answer: dict có pronunciation_score
+    UT-LRN-QT-SPK-006  — SpeakingQuestionType.evaluate_answer: dict không hợp lệ
+    UT-LRN-QT-SPK-007  — SpeakingQuestionType.evaluate_answer: kiểu list/None → invalid
+    UT-LRN-QT-SPK-008  — SpeakingQuestionType._get_feedback: score>=90 → 'xuất sắc'
+    UT-LRN-QT-SPK-009  — SpeakingQuestionType._get_feedback: score>=80 → 'rất tốt'
+    UT-LRN-QT-SPK-010  — SpeakingQuestionType._get_feedback: score>=70 → 'khá tốt'
+    UT-LRN-QT-SPK-011  — SpeakingQuestionType._get_feedback: score>=50 → 'cần cải thiện'
+    UT-LRN-QT-SPK-012  — SpeakingQuestionType._get_feedback: score<50 → 'chưa chính xác'
+    UT-LRN-QT-SPK-013  — Module-level build_question() delegate sang class method
+    UT-LRN-QT-SPK-014  — Module-level evaluate_answer() delegate sang class method
 
 Rollback: pytest-django tự động rollback toàn bộ thay đổi DB sau mỗi test.
 """
@@ -93,7 +110,9 @@ class TestReadingQuestionType:
         assert result["is_correct"] is True
         assert result["score"] == 1.0
 
-    def test_UT_LRN_QT_READ_002_evaluate_answer_wrong(self, vocab_pool):
+    # ── UT-LRN-QT-READ-003 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_READ_003_evaluate_answer_wrong(self, vocab_pool):
+        # TC: UT-LRN-QT-READ-003 — evaluate_answer index sai → is_correct=False, score=0.0
         # [Arrange] Chọn index sai (cộng 1 rồi mod)
         target      = vocab_pool[0]
         question    = ReadingQuestionType.build_question(target, vocab_pool[1:])
@@ -107,7 +126,9 @@ class TestReadingQuestionType:
         assert result["is_correct"] is False
         assert result["score"] == 0.0
 
-    def test_reading_requires_pool(self):
+    # ── UT-LRN-QT-READ-004 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_READ_004_reading_requires_pool(self):
+        # TC: UT-LRN-QT-READ-004 — ReadingQuestionType.requires_pool() trả True (cần pool sinh options)
         # [Act & Assert] ReadingQuestionType cần pool để tạo options
         assert ReadingQuestionType.requires_pool() is True
 
@@ -145,7 +166,9 @@ class TestWritingQuestionType:
         # [Assert] Phải được chấp nhận (case insensitive)
         assert result["is_correct"] is True
 
-    def test_evaluate_writing_wrong_answer(self, vocab_pool):
+    # ── UT-LRN-QT-WR-003 ──────────────────────────────────────────────────
+    def test_UT_LRN_QT_WR_003_evaluate_writing_wrong_answer(self, vocab_pool):
+        # TC: UT-LRN-QT-WR-003 — evaluate_answer với từ sai → is_correct=False, score=0.0
         # [Arrange]
         target   = vocab_pool[0]
         question = WritingQuestionType.build_question(target)
@@ -157,7 +180,9 @@ class TestWritingQuestionType:
         assert result["is_correct"] is False
         assert result["score"] == 0.0
 
-    def test_writing_not_requires_pool(self):
+    # ── UT-LRN-QT-WR-004 ──────────────────────────────────────────────────
+    def test_UT_LRN_QT_WR_004_writing_not_requires_pool(self):
+        # TC: UT-LRN-QT-WR-004 — WritingQuestionType.requires_pool() trả False (không có multiple choice)
         # [Act & Assert] WritingQuestionType không cần pool (không có multiple choice)
         assert WritingQuestionType.requires_pool() is False
 
@@ -184,7 +209,9 @@ class TestSpeakingQuestionType:
         assert result["is_correct"] is False
         assert "chưa sẵn sàng" in result["feedback"]
 
-    def test_evaluate_float_answer_above_threshold_is_correct(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-002 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_002_evaluate_float_answer_above_threshold_is_correct(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-002 — float score >= 70 → is_correct=True, score chuẩn hoá, pronunciation_score được set
         # [Arrange] float score >= 70 → pass
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
@@ -198,7 +225,9 @@ class TestSpeakingQuestionType:
         assert abs(result["score"] - 0.85) < 0.001
         assert result["pronunciation_score"] == 85.0
 
-    def test_evaluate_float_answer_below_threshold_is_wrong(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-003 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_003_evaluate_float_answer_below_threshold_is_wrong(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-003 — float score < 70 → is_correct=False
         # [Arrange] float score < 70 → fail
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
@@ -208,7 +237,9 @@ class TestSpeakingQuestionType:
 
         assert result["is_correct"] is False
 
-    def test_evaluate_int_answer_treated_as_score(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-004 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_004_evaluate_int_answer_treated_as_score(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-004 — int answer cũng được xử lý như float score
         # [Arrange] int answer cũng được xử lý như float score
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
@@ -218,7 +249,9 @@ class TestSpeakingQuestionType:
 
         assert result["is_correct"] is True
 
-    def test_evaluate_dict_with_pronunciation_score(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-005 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_005_evaluate_dict_with_pronunciation_score(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-005 — dict có 'pronunciation_score' → dùng score đó để đánh giá
         # [Arrange] dict có key 'pronunciation_score' → dùng score đó
         target      = vocab_pool[0]
         question    = SpeakingQuestionType.build_question(target)
@@ -230,7 +263,9 @@ class TestSpeakingQuestionType:
         assert result["is_correct"] is True
         assert "phonemes" in result
 
-    def test_evaluate_dict_without_valid_key_returns_invalid_format(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-006 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_006_evaluate_dict_without_valid_key_returns_invalid_format(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-006 — dict không có 'pronunciation_score'/'audio_file' → định dạng không hợp lệ
         # [Arrange] dict không có 'pronunciation_score' hay 'audio_file' → định dạng không hợp lệ
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
@@ -241,7 +276,9 @@ class TestSpeakingQuestionType:
         assert result["is_correct"] is False
         assert "không hợp lệ" in result["feedback"]
 
-    def test_evaluate_invalid_type_returns_error(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-007 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_007_evaluate_invalid_type_returns_error(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-007 — user_answer kiểu list/None → trả lỗi 'phải là file audio'
         # [Arrange] user_answer kiểu list → không hợp lệ
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
@@ -254,29 +291,41 @@ class TestSpeakingQuestionType:
 
     # ── _get_feedback branches ─────────────────────────────────────────────
 
-    def test_get_feedback_excellent(self):
+    # ── UT-LRN-QT-SPK-008 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_008_get_feedback_excellent(self):
+        # TC: UT-LRN-QT-SPK-008 — score >= 90 → feedback "xuất sắc"
         # [Act & Assert] score >= 90 → "xuất sắc"
         assert "xuất sắc" in SpeakingQuestionType._get_feedback(95)
 
-    def test_get_feedback_very_good(self):
+    # ── UT-LRN-QT-SPK-009 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_009_get_feedback_very_good(self):
+        # TC: UT-LRN-QT-SPK-009 — score >= 80 → feedback "rất tốt"
         # [Act & Assert] score >= 80 → "rất tốt"
         assert "rất tốt" in SpeakingQuestionType._get_feedback(82)
 
-    def test_get_feedback_good(self):
+    # ── UT-LRN-QT-SPK-010 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_010_get_feedback_good(self):
+        # TC: UT-LRN-QT-SPK-010 — score >= 70 → feedback "khá tốt"
         # [Act & Assert] score >= 70 → "khá tốt"
         assert "khá tốt" in SpeakingQuestionType._get_feedback(70)
 
-    def test_get_feedback_needs_improvement(self):
+    # ── UT-LRN-QT-SPK-011 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_011_get_feedback_needs_improvement(self):
+        # TC: UT-LRN-QT-SPK-011 — score >= 50 → feedback "cần cải thiện"
         # [Act & Assert] score >= 50 → "cần cải thiện"
         assert "cần cải thiện" in SpeakingQuestionType._get_feedback(55)
 
-    def test_get_feedback_incorrect(self):
+    # ── UT-LRN-QT-SPK-012 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_012_get_feedback_incorrect(self):
+        # TC: UT-LRN-QT-SPK-012 — score < 50 → feedback "chưa chính xác"
         # [Act & Assert] score < 50 → "chưa chính xác"
         assert "chưa chính xác" in SpeakingQuestionType._get_feedback(30)
 
     # ── deprecated module-level wrappers ──────────────────────────────────
 
-    def test_deprecated_build_question_wrapper(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-013 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_013_deprecated_build_question_wrapper(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-013 — Module-level build_question() delegate sang class method
         # [Arrange] Module-level build_question() nên delegate sang class method
         from learning.services.question_types.speaking import build_question
         target = vocab_pool[0]
@@ -285,7 +334,9 @@ class TestSpeakingQuestionType:
         q = build_question(target)
         assert q["type"] == "speaking"
 
-    def test_deprecated_evaluate_answer_wrapper(self, vocab_pool):
+    # ── UT-LRN-QT-SPK-014 ─────────────────────────────────────────────────
+    def test_UT_LRN_QT_SPK_014_deprecated_evaluate_answer_wrapper(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-014 — Module-level evaluate_answer() delegate sang class method
         # [Arrange] Module-level evaluate_answer() nên delegate sang class method
         from learning.services.question_types.speaking import evaluate_answer
         target   = vocab_pool[0]

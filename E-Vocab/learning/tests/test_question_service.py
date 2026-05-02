@@ -5,8 +5,13 @@ Unit tests cho learning/services/question_service.py
 Test Cases:
     UT-LRN-QS-001 — generate_session_questions: vocabularies=[] → ValueError
     UT-LRN-QS-002 — generate_session_questions: enabled_types chứa type lạ → ValueError
-    UT-LRN-QS-003 — evaluate_answer: question không có key 'type' → ValueError
-    UT-LRN-QS-004 — get_available_question_types: trả map có các type chuẩn
+    UT-LRN-QS-003 — generate_session_questions: mặc định tạo câu hỏi đúng số vocab
+    UT-LRN-QS-004 — generate_session_questions: total_questions giới hạn số câu hỏi
+    UT-LRN-QS-005 — generate_session_questions: enabled_types=['writing'] → tất cả writing
+    UT-LRN-QS-006 — evaluate_answer: question không có key 'type' → ValueError
+    UT-LRN-QS-007 — evaluate_answer: reading đúng đáp án → is_correct=True
+    UT-LRN-QS-008 — evaluate_answer: writing đúng đáp án → is_correct=True
+    UT-LRN-QS-009 — get_available_question_types: trả map có 5 type chuẩn
 
 Rollback: pytest-django tự động rollback toàn bộ thay đổi DB sau mỗi test.
 """
@@ -66,9 +71,11 @@ class TestGenerateSessionQuestions:
                 vocabularies=vocab_list, enabled_types=["nonexistent_type"]
             )
 
-    def test_generates_questions_for_all_vocabs_by_default(
+    # ── UT-LRN-QS-003 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_003_generates_questions_for_all_vocabs_by_default(
         self, question_service, vocab_list
     ):
+        # TC: UT-LRN-QS-003 — Mặc định tạo đúng 1 câu hỏi cho mỗi vocab
         # [Arrange] 10 vocabularies, không giới hạn total_questions
         # [Act]
         questions = question_service.generate_session_questions(vocabularies=vocab_list)
@@ -76,7 +83,9 @@ class TestGenerateSessionQuestions:
         # [Assert] Mỗi vocab cho 1 question
         assert len(questions) == len(vocab_list)
 
-    def test_respects_total_questions_limit(self, question_service, vocab_list):
+    # ── UT-LRN-QS-004 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_004_respects_total_questions_limit(self, question_service, vocab_list):
+        # TC: UT-LRN-QS-004 — total_questions=3 → chỉ tạo 3 câu hỏi (giới hạn)
         # [Arrange] total_questions = 3 (nhỏ hơn số vocab)
         # [Act]
         questions = question_service.generate_session_questions(
@@ -86,7 +95,9 @@ class TestGenerateSessionQuestions:
         # [Assert] Phải giới hạn đúng 3 câu
         assert len(questions) == 3
 
-    def test_generates_with_single_enabled_type(self, question_service, vocab_list):
+    # ── UT-LRN-QS-005 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_005_generates_with_single_enabled_type(self, question_service, vocab_list):
+        # TC: UT-LRN-QS-005 — enabled_types=['writing'] → tất cả câu hỏi đều type='writing'
         # [Arrange] Chỉ bật type 'writing'
         # [Act]
         questions = question_service.generate_session_questions(
@@ -106,9 +117,9 @@ class TestGenerateSessionQuestions:
 @pytest.mark.django_db
 class TestEvaluateAnswer:
 
-    # ── UT-LRN-QS-003 ─────────────────────────────────────────────────────
-    def test_UT_LRN_QS_003_question_without_type_raises_value_error(self, question_service):
-        # TC: UT-LRN-QS-003 — question dict không có key 'type' → Raise ValueError
+    # ── UT-LRN-QS-006 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_006_question_without_type_raises_value_error(self, question_service):
+        # TC: UT-LRN-QS-006 — question dict không có key 'type' → Raise ValueError
         # [Arrange] question dict thiếu key 'type'
         bad_question = {"answer": "something"}
 
@@ -116,7 +127,9 @@ class TestEvaluateAnswer:
         with pytest.raises(ValueError, match="type"):
             question_service.evaluate_answer(user_answer="abc", question=bad_question)
 
-    def test_evaluate_reading_correct_answer(self, question_service, vocab_list):
+    # ── UT-LRN-QS-007 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_007_evaluate_reading_correct_answer(self, question_service, vocab_list):
+        # TC: UT-LRN-QS-007 — Reading question, đúng đáp án → is_correct=True
         # [Arrange] Tạo reading question, lấy đáp án đúng
         questions   = question_service.generate_session_questions(
             vocabularies=vocab_list, enabled_types=["reading"]
@@ -130,7 +143,9 @@ class TestEvaluateAnswer:
         # [Assert]
         assert result["is_correct"] is True
 
-    def test_evaluate_writing_correct_answer(self, question_service, vocab_list):
+    # ── UT-LRN-QS-008 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_008_evaluate_writing_correct_answer(self, question_service, vocab_list):
+        # TC: UT-LRN-QS-008 — Writing question, đúng canonical → is_correct=True
         # [Arrange] Tạo writing question, lấy canonical làm đáp án
         questions = question_service.generate_session_questions(
             vocabularies=vocab_list, enabled_types=["writing"]
@@ -152,9 +167,9 @@ class TestEvaluateAnswer:
 
 class TestGetAvailableQuestionTypes:
 
-    # ── UT-LRN-QS-004 ─────────────────────────────────────────────────────
-    def test_UT_LRN_QS_004_returns_all_standard_types(self, question_service):
-        # TC: UT-LRN-QS-004 — get_available_question_types trả map có 5 type chuẩn
+    # ── UT-LRN-QS-009 ─────────────────────────────────────────────────────
+    def test_UT_LRN_QS_009_returns_all_standard_types(self, question_service):
+        # TC: UT-LRN-QS-009 — get_available_question_types trả map có 5 type chuẩn
         # [Act]
         types = question_service.get_available_question_types()
 

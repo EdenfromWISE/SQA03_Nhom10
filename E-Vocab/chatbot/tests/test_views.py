@@ -5,6 +5,7 @@ Unit tests cho chatbot/views.py
 Test Cases:
     UT-CHB-HIS-001 — ChatbotHistoryView GET: chỉ trả messages của user hiện tại, đúng thứ tự
     UT-CHB-HIS-002 — ChatbotHistoryView DELETE: xóa lịch sử user hiện tại, giữ user khác
+    UT-CHB-HIS-003 — ChatbotHistoryView GET: anonymous user → 401/403
     UT-CHB-API-001 — ChatbotApiEndpoint POST: message rỗng → 400
     UT-CHB-API-002 — ChatbotApiEndpoint POST: session có last_vocab_word → dùng khi intent thiếu entity
     UT-CHB-API-003 — ChatbotApiEndpoint POST: message hợp lệ → tạo 2 ChatMessage
@@ -59,7 +60,9 @@ class TestChatbotHistoryViewGet:
         assert timestamps == sorted(timestamps), "Messages phải sắp xếp theo timestamp ASC"
         # [Rollback] ChatMessages sẽ bị rollback sau test
 
-    def test_unauthenticated_get_returns_401_or_403(self, api_client):
+    # ── UT-CHB-HIS-003 ─────────────────────────────────────────────────────
+    def test_UT_CHB_HIS_003_unauthenticated_get_returns_401_or_403(self, api_client):
+        # TC: UT-CHB-HIS-003 — Anonymous user GET /history → 401 hoặc 403
         # [Act] Anonymous user gọi lịch sử
         response = api_client.get(HISTORY_URL)
 
