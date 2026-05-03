@@ -1,0 +1,50 @@
+URL: http://localhost:5173/stats
+TITLE: Thống kê - EVocab
+STORAGE: {"ls_access":null,"ss_access":null,"path":"/stats"}
+BODY (first 800 chars):
+EVocab
+Trang chủ
+Học tập
+Chatbot
+Thống kê
+Người dùng
+Đăng nhập
+Thống kê kết quả học tập
+Tổng từ đã học
+
+0
+
+Từ trước đến nay
+Từ mới hôm nay
+
+0
+
+Đã học trong ngày
+Ôn tập hôm nay
+
+0
+
+Từ cần ôn tập
+Từ đã ôn tập
+
+0
+
+Đã hoàn thành hôm nay
+
+CHUỖI NGÀY HỌC
+
+tháng 5 năm 2026
+
+Đang duy trì
+
+-- ngày
+
+Dài nhất
+
+-- ngày
+Không thể tải dữ liệu streak. Vui lòng thử lại.
+Từ vựng sắp ôn tập
+Ôn tập hôm nay
+Không thể tải dữ liệu từ vựng sắp ôn tập. Vui lòng thử lại.
+Các phiên học gần đây
+Thời gian	Loại	Số từ	Kết quả	Trạng thái

@@ -1,0 +1,6 @@
+tc_id,email,password,password2,expect,error_field,note
+REG-ST-02,,,,fail_validation,email|password|password2,Bỏ trống tất cả các trường bắt buộc
+REG-ST-04,abc@com,Abc@12345,Abc@12345,fail_validation,email,Email sai định dạng
+REG-ST-06,sysauto_pwd@test.local,1234,1234,fail_validation,password,Mật khẩu dưới 8 ký tự
+REG-ST-09,sysauto_p9@test.local,Abc@12345,Abc@1234,fail_validation,password2,Xác nhận mật khẩu không khớp
+REG-ST-16,sysauto_cancel@test.local,Abc@12345,Abc@12345,cancel,,Người dùng huỷ form giữa chừng

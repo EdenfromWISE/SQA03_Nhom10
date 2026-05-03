@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="E-Vocab API Regression" tests="40" time="1.051">
+  <testsuite name="AUTH / TC-AUTH-REG-001 | Register new account" id="c82b9c4e-f32b-4fb1-b841-fc06a853bd46" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.030">
+    <testcase name="TC-AUTH-REG-001 is traceable" time="0.030" classname="AuthTcAuthReg001RegisterNewAccount"/>
+    <testcase name="Status code is expected" time="0.030" classname="AuthTcAuthReg001RegisterNewAccount">
+      <failure type="AssertionFailure" message="expected [ 200, 201 ] to include 400">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-REG-001 | Register new account.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200, 201 ] to include 400.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200, 201 ] to include 400
+   at Object.eval sandbox-script.js:2:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.030" classname="AuthTcAuthReg001RegisterNewAccount"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-REG-VERIFY-001 | Verify email with invalid key" id="a37bcd95-3388-4c2d-8de3-eaf62f9e4c6d" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="0" errors="0" time="0.004">
+    <testcase name="TC-AUTH-REG-VERIFY-001 is traceable" time="0.004" classname="AuthTcAuthRegVerify001VerifyEmailWithInvalidKey"/>
+    <testcase name="Status code is expected" time="0.004" classname="AuthTcAuthRegVerify001VerifyEmailWithInvalidKey"/>
+    <testcase name="Response time &lt; 5000ms" time="0.004" classname="AuthTcAuthRegVerify001VerifyEmailWithInvalidKey"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-REG-RESEND-001 | Resend verification email" id="62dada55-44e8-429d-85ff-26cabd60fe53" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="0" errors="0" time="0.005">
+    <testcase name="TC-AUTH-REG-RESEND-001 is traceable" time="0.005" classname="AuthTcAuthRegResend001ResendVerificationEmail"/>
+    <testcase name="Status is not 5xx" time="0.005" classname="AuthTcAuthRegResend001ResendVerificationEmail"/>
+    <testcase name="Response time &lt; 5000ms" time="0.005" classname="AuthTcAuthRegResend001ResendVerificationEmail"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGIN-001 | Login with seeded account" id="213f3578-6036-4e75-b895-67de595b8eda" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.253">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-USER-001 | Get current user" id="6c8e29f4-3a28-4341-b07d-a12dac62a25c" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.004">
+    <testcase name="TC-AUTH-USER-001 is traceable" time="0.004" classname="AuthTcAuthUser001GetCurrentUser"/>
+    <testcase name="Status code is expected" time="0.004" classname="AuthTcAuthUser001GetCurrentUser">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-USER-001 | Get current user.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:5).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.004" classname="AuthTcAuthUser001GetCurrentUser"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-USER-UPDATE-001 | Update current user profile fields" id="ac62cfa9-187e-437a-ae88-2f1a737d44e9" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.003">
+    <testcase name="TC-AUTH-USER-UPDATE-001 is traceable" time="0.003" classname="AuthTcAuthUserUpdate001UpdateCurrentUserProfileFields"/>
+    <testcase name="Status code is expected" time="0.003" classname="AuthTcAuthUserUpdate001UpdateCurrentUserProfileFields">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-USER-UPDATE-001 | Update current user profile fields.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:6).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="AuthTcAuthUserUpdate001UpdateCurrentUserProfileFields"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-USER-AVATAR-NEG-001 | Avatar upload without file" id="ad9809d2-e59e-4a33-969c-425608e393dd" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-AUTH-USER-AVATAR-NEG-001 is traceable" time="0.002" classname="AuthTcAuthUserAvatarNeg001AvatarUploadWithoutFile"/>
+    <testcase name="Status code is expected" time="0.002" classname="AuthTcAuthUserAvatarNeg001AvatarUploadWithoutFile">
+      <failure type="AssertionFailure" message="expected [ 400 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-USER-AVATAR-NEG-001 | Avatar upload without file.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 400 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 400 ] to include 401
+   at Object.eval sandbox-script.js:2:7).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="AuthTcAuthUserAvatarNeg001AvatarUploadWithoutFile"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-GOOGLE-MISSING-001 | Google login missing token" id="69e4a304-1318-4908-b267-f1442e52f952" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="0" errors="0" time="0.003">
+    <testcase name="TC-AUTH-GOOGLE-MISSING-001 is traceable" time="0.003" classname="AuthTcAuthGoogleMissing001GoogleLoginMissingToken"/>
+    <testcase name="Status code is expected" time="0.003" classname="AuthTcAuthGoogleMissing001GoogleLoginMissingToken"/>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="AuthTcAuthGoogleMissing001GoogleLoginMissingToken"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-PWD-RESET-REQ-001 | Password reset request" id="466c619a-6251-4bb7-8983-7a8ff99ab2e7" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.004">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-PWD-RESET-CONFIRM-001 | Password reset confirm" id="c7306e6e-a5c5-48aa-8c7a-fc50eb7089e0" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.003">
+    <testcase name="TC-AUTH-PWD-RESET-CONFIRM-001 is traceable" time="0.003" classname="AuthTcAuthPwdResetConfirm001PasswordResetConfirm"/>
+    <testcase name="Status code is expected" time="0.003" classname="AuthTcAuthPwdResetConfirm001PasswordResetConfirm">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 400">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-PWD-RESET-CONFIRM-001 | Password reset confirm.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 400.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 400
+   at Object.eval sandbox-script.js:2:10).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="AuthTcAuthPwdResetConfirm001PasswordResetConfirm"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGIN-NEWPASS-001 | Login with new password" id="6cf6d625-d379-426d-bbe1-aad3961dfeb2" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.241">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-PWD-CHANGE-001 | Password change back to seed password" id="3473190f-e42d-464e-a75d-d90951e4953a" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-AUTH-PWD-CHANGE-001 is traceable" time="0.002" classname="AuthTcAuthPwdChange001PasswordChangeBackToSeedPassword"/>
+    <testcase name="Status code is expected" time="0.002" classname="AuthTcAuthPwdChange001PasswordChangeBackToSeedPassword">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-PWD-CHANGE-001 | Password change back to seed password.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:12).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="AuthTcAuthPwdChange001PasswordChangeBackToSeedPassword"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGIN-RESETBACK-001 | Login with restored seed password" id="1c700736-99b6-4469-8a44-1a7951ecfbf1" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.245">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGOUT-001 | Logout current token" id="5e143dc9-e784-4f0c-ac1c-046c2a0ed994" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="0" errors="0" time="0.002">
+    <testcase name="TC-AUTH-LOGOUT-001 is traceable" time="0.002" classname="AuthTcAuthLogout001LogoutCurrentToken"/>
+    <testcase name="Status is not 5xx" time="0.002" classname="AuthTcAuthLogout001LogoutCurrentToken"/>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="AuthTcAuthLogout001LogoutCurrentToken"/>
+  </testsuite>
+  <testsuite name="ACCOUNTS / TC-ACC-LOGIN-PAGE-001 | Allauth login page" id="dc694ef0-4d18-4a3d-b556-f2b4224e1846" timestamp="2026-05-01T07:36:19.793Z" tests="4" failures="0" errors="0" time="0.010">
+    <testcase name="TC-ACC-LOGIN-PAGE-001 is traceable" time="0.010" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+    <testcase name="Status code is expected" time="0.010" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.010" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+    <testcase name="HTML content returned" time="0.010" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+  </testsuite>
+  <testsuite name="ACCOUNTS / TC-ACC-SIGNUP-PAGE-001 | Allauth signup page" id="92738ad4-b1d4-456a-8630-8626cea78708" timestamp="2026-05-01T07:36:19.793Z" tests="4" failures="0" errors="0" time="0.018">
+    <testcase name="TC-ACC-SIGNUP-PAGE-001 is traceable" time="0.018" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+    <testcase name="Status code is expected" time="0.018" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.018" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+    <testcase name="HTML content returned" time="0.018" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+  </testsuite>
+  <testsuite name="ACCOUNTS / TC-ACC-PWD-RESET-PAGE-001 | Allauth password reset page" id="94de403c-831e-4f35-81b8-dcc514678597" timestamp="2026-05-01T07:36:19.793Z" tests="4" failures="0" errors="0" time="0.013">
+    <testcase name="TC-ACC-PWD-RESET-PAGE-001 is traceable" time="0.013" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+    <testcase name="Status code is expected" time="0.013" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.013" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+    <testcase name="HTML content returned" time="0.013" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-COURSES-ANON-001 | Course list requires auth" id="4e026792-6bf2-4993-8f6d-6b4cd85c4bd8" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="0" errors="0" time="0.002">
+    <testcase name="TC-VOC-COURSES-ANON-001 is traceable" time="0.002" classname="VocabularyTcVocCoursesAnon001CourseListRequiresAuth"/>
+    <testcase name="Status code is expected" time="0.002" classname="VocabularyTcVocCoursesAnon001CourseListRequiresAuth"/>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="VocabularyTcVocCoursesAnon001CourseListRequiresAuth"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-COURSES-001 | Get course list" id="973a7fd8-fe06-444f-8b4c-91696bb84862" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.002">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-COURSE-DETAIL-001 | Get course detail" id="90d02f3d-cc66-47cb-88de-cc287729c247" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-VOC-COURSE-DETAIL-001 is traceable" time="0.002" classname="VocabularyTcVocCourseDetail001GetCourseDetail"/>
+    <testcase name="Status code is expected" time="0.002" classname="VocabularyTcVocCourseDetail001GetCourseDetail">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: VOCABULARY / TC-VOC-COURSE-DETAIL-001 | Get course detail.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:20).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="VocabularyTcVocCourseDetail001GetCourseDetail"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-TOPIC-DETAIL-001 | Get topic detail" id="b543655a-3b3f-4a5f-b9cb-9481373c33a4" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-VOC-TOPIC-DETAIL-001 is traceable" time="0.002" classname="VocabularyTcVocTopicDetail001GetTopicDetail"/>
+    <testcase name="Status code is expected" time="0.002" classname="VocabularyTcVocTopicDetail001GetTopicDetail">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: VOCABULARY / TC-VOC-TOPIC-DETAIL-001 | Get topic detail.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:21).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="VocabularyTcVocTopicDetail001GetTopicDetail"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-PRACTICE-CREATE-001 | Create practice session" id="7d8b7f69-a1e0-48f0-a39b-e1ed89da27da" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.002">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-GET-001 | Get practice session" id="33178aa2-5a41-4b28-a7e3-1a413fd1dcc4" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.136">
+    <testcase name="TC-LRN-SESSION-GET-001 is traceable" time="0.136" classname="LearningTcLrnSessionGet001GetPracticeSession"/>
+    <testcase name="Status code is expected" time="0.136" classname="LearningTcLrnSessionGet001GetPracticeSession">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 404">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-SESSION-GET-001 | Get practice session.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 404.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 404
+   at Object.eval sandbox-script.js:2:23).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.136" classname="LearningTcLrnSessionGet001GetPracticeSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-DETAIL-001 | Get practice session detail" id="f3f1a560-cd2c-4d93-8886-37ccff7fb6b8" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.007">
+    <testcase name="TC-LRN-SESSION-DETAIL-001 is traceable" time="0.007" classname="LearningTcLrnSessionDetail001GetPracticeSessionDetail"/>
+    <testcase name="Status code is expected" time="0.007" classname="LearningTcLrnSessionDetail001GetPracticeSessionDetail">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 404">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-SESSION-DETAIL-001 | Get practice session detail.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 404.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 404
+   at Object.eval sandbox-script.js:2:24).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="LearningTcLrnSessionDetail001GetPracticeSessionDetail"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-QUESTIONS-GET-001 | Get session questions" id="c7d2bbda-8bf6-4864-9a88-40bdcfa7063f" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.006">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-ANSWER-SUBMIT-001 | Submit answer" id="20a4731e-4c08-47bd-978b-6622011fd452" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.008">
+    <testcase name="TC-LRN-ANSWER-SUBMIT-001 is traceable" time="0.008" classname="LearningTcLrnAnswerSubmit001SubmitAnswer"/>
+    <testcase name="Status code is expected" time="0.008" classname="LearningTcLrnAnswerSubmit001SubmitAnswer">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 404">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-ANSWER-SUBMIT-001 | Submit answer.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 404.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 404
+   at Object.eval sandbox-script.js:2:26).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.008" classname="LearningTcLrnAnswerSubmit001SubmitAnswer"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-COMPLETE-001 | Complete session" id="49a86a52-62c7-4206-bdbc-0f5d027044bb" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.006">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-HISTORY-001 | Get session history" id="36a3c5e9-4cdc-47da-919c-004f708cddf9" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.003">
+    <testcase name="TC-LRN-SESSION-HISTORY-001 is traceable" time="0.003" classname="LearningTcLrnSessionHistory001GetSessionHistory"/>
+    <testcase name="Status code is expected" time="0.003" classname="LearningTcLrnSessionHistory001GetSessionHistory">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-SESSION-HISTORY-001 | Get session history.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:28).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="LearningTcLrnSessionHistory001GetSessionHistory"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-REVIEW-CREATE-001 | Create review session" id="83faa964-9ccd-4911-9c00-42a353e369d8" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-LRN-REVIEW-CREATE-001 is traceable" time="0.002" classname="LearningTcLrnReviewCreate001CreateReviewSession"/>
+    <testcase name="Status code is expected" time="0.002" classname="LearningTcLrnReviewCreate001CreateReviewSession">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-REVIEW-CREATE-001 | Create review session.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:29).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="LearningTcLrnReviewCreate001CreateReviewSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-EXAM-CREATE-001 | Create exam session" id="0da8f23e-1d4c-47bd-a8e4-8483b39d9d41" timestamp="2026-05-01T07:36:19.793Z" tests="0" failures="0" errors="1" time="0.003">
+    <system-err><![CDATA[Iteration: 0
+
+---
+testScriptError: Identifier 'data' has already been declared
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-EXAM-CANCEL-001 | Cancel exam session" id="ece7ca5b-c9b3-4cc4-a800-3ef0a514b269" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.007">
+    <testcase name="TC-LRN-EXAM-CANCEL-001 is traceable" time="0.007" classname="LearningTcLrnExamCancel001CancelExamSession"/>
+    <testcase name="Status code is expected" time="0.007" classname="LearningTcLrnExamCancel001CancelExamSession">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 404">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-EXAM-CANCEL-001 | Cancel exam session.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 404.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 404
+   at Object.eval sandbox-script.js:2:31).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="LearningTcLrnExamCancel001CancelExamSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-PRON-ASSESS-NEG-001 | Assess pronunciation without file" id="bc63133b-9f24-4e24-b646-f61a5d7523c3" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-LRN-PRON-ASSESS-NEG-001 is traceable" time="0.002" classname="LearningTcLrnPronAssessNeg001AssessPronunciationWithoutFile"/>
+    <testcase name="Status code is expected" time="0.002" classname="LearningTcLrnPronAssessNeg001AssessPronunciationWithoutFile">
+      <failure type="AssertionFailure" message="expected [ 400 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-PRON-ASSESS-NEG-001 | Assess pronunciation without file.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 400 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 400 ] to include 401
+   at Object.eval sandbox-script.js:2:32).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="LearningTcLrnPronAssessNeg001AssessPronunciationWithoutFile"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-STREAK-001 | Get streak" id="869c6b3a-2ebe-47d2-a021-846e1f011f89" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-PRG-STREAK-001 is traceable" time="0.002" classname="ProgressTcPrgStreak001GetStreak"/>
+    <testcase name="Status code is expected" time="0.002" classname="ProgressTcPrgStreak001GetStreak">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: PROGRESS / TC-PRG-STREAK-001 | Get streak.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:33).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="ProgressTcPrgStreak001GetStreak"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-UPCOMING-001 | Get upcoming review" id="a800d51d-9172-462a-919e-f36e2669485a" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-PRG-UPCOMING-001 is traceable" time="0.002" classname="ProgressTcPrgUpcoming001GetUpcomingReview"/>
+    <testcase name="Status code is expected" time="0.002" classname="ProgressTcPrgUpcoming001GetUpcomingReview">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: PROGRESS / TC-PRG-UPCOMING-001 | Get upcoming review.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:34).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="ProgressTcPrgUpcoming001GetUpcomingReview"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-OVERVIEW-001 | Get overview" id="4b52005b-f39b-44be-9ba5-3b18613b3cc1" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.003">
+    <testcase name="TC-PRG-OVERVIEW-001 is traceable" time="0.003" classname="ProgressTcPrgOverview001GetOverview"/>
+    <testcase name="Status code is expected" time="0.003" classname="ProgressTcPrgOverview001GetOverview">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: PROGRESS / TC-PRG-OVERVIEW-001 | Get overview.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:35).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="ProgressTcPrgOverview001GetOverview"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-DAILY-001 | Get daily progress" id="b30b47e8-2f57-4186-b220-c16e94fb37b9" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.003">
+    <testcase name="TC-PRG-DAILY-001 is traceable" time="0.003" classname="ProgressTcPrgDaily001GetDailyProgress"/>
+    <testcase name="Status code is expected" time="0.003" classname="ProgressTcPrgDaily001GetDailyProgress">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: PROGRESS / TC-PRG-DAILY-001 | Get daily progress.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:36).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="ProgressTcPrgDaily001GetDailyProgress"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-RECENT-001 | Get recent sessions" id="13e69e3b-c02c-449c-8ec0-99d5f38ac722" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.003">
+    <testcase name="TC-PRG-RECENT-001 is traceable" time="0.003" classname="ProgressTcPrgRecent001GetRecentSessions"/>
+    <testcase name="Status code is expected" time="0.003" classname="ProgressTcPrgRecent001GetRecentSessions">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: PROGRESS / TC-PRG-RECENT-001 | Get recent sessions.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:37).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="ProgressTcPrgRecent001GetRecentSessions"/>
+  </testsuite>
+  <testsuite name="CHATBOT / TC-CHB-CHAT-EMPTY-001 | Chat endpoint with empty message" id="29c0dd5e-76d3-4009-8d41-0f952b7bf646" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-CHB-CHAT-EMPTY-001 is traceable" time="0.002" classname="ChatbotTcChbChatEmpty001ChatEndpointWithEmptyMessage"/>
+    <testcase name="Status code is expected" time="0.002" classname="ChatbotTcChbChatEmpty001ChatEndpointWithEmptyMessage">
+      <failure type="AssertionFailure" message="expected [ 400 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: CHATBOT / TC-CHB-CHAT-EMPTY-001 | Chat endpoint with empty message.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 400 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 400 ] to include 401
+   at Object.eval sandbox-script.js:2:38).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="ChatbotTcChbChatEmpty001ChatEndpointWithEmptyMessage"/>
+  </testsuite>
+  <testsuite name="CHATBOT / TC-CHB-HISTORY-GET-001 | Get chatbot history" id="474ad9ad-0bfa-4857-8359-9b5f17dbf60a" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-CHB-HISTORY-GET-001 is traceable" time="0.002" classname="ChatbotTcChbHistoryGet001GetChatbotHistory"/>
+    <testcase name="Status code is expected" time="0.002" classname="ChatbotTcChbHistoryGet001GetChatbotHistory">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: CHATBOT / TC-CHB-HISTORY-GET-001 | Get chatbot history.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:39).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="ChatbotTcChbHistoryGet001GetChatbotHistory"/>
+  </testsuite>
+  <testsuite name="CHATBOT / TC-CHB-HISTORY-DELETE-001 | Delete chatbot history" id="119b46d7-811c-4ca9-99aa-d4bf99cf3adc" timestamp="2026-05-01T07:36:19.793Z" tests="3" failures="1" errors="0" time="0.002">
+    <testcase name="TC-CHB-HISTORY-DELETE-001 is traceable" time="0.002" classname="ChatbotTcChbHistoryDelete001DeleteChatbotHistory"/>
+    <testcase name="Status code is expected" time="0.002" classname="ChatbotTcChbHistoryDelete001DeleteChatbotHistory">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: c3aae8b8-a3c7-428f-bd68-bb92da131e5b.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: CHATBOT / TC-CHB-HISTORY-DELETE-001 | Delete chatbot history.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 401
+   at Object.eval sandbox-script.js:2:40).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.002" classname="ChatbotTcChbHistoryDelete001DeleteChatbotHistory"/>
+  </testsuite>
+</testsuites>

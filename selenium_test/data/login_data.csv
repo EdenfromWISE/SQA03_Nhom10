@@ -1,0 +1,4 @@
+tc_id,email,password,expect,note
+LOG-ST-01,${TEST_USER_EMAIL},${TEST_USER_PASSWORD},pass,Đăng nhập thành công với email/password
+LOG-ST-02-empty,,,fail_html5,Bỏ trống email + password (HTML5 chặn submit)
+LOG-ST-02-format,abc@,123,fail_alert,Email sai định dạng + sai password

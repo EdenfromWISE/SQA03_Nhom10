@@ -1,0 +1,67 @@
+Đăng ký (REG-ST)
+
+REG-ST-02
+
+REG-ST-04
+
+REG-ST-06
+
+REG-ST-09
+
+REG-ST-16
+
+Đăng nhập (LOG-ST)
+
+LOG-ST-01
+
+LOG-ST-02
+
+LOG-ST-16
+
+Trang Admin (UM-ST)
+
+UM-ST-01
+
+UM-ST-02
+
+UM-ST-03
+
+UM-ST-04
+
+Tìm kiếm Admin (ADMIN-SRCH)
+
+ADMIN-SRCH-HP-01
+
+ADMIN-SRCH-HP-02
+
+ADMIN-SRCH-HP-03
+
+ADMIN-SRCH-NG-02
+
+ADMIN-SRCH-UI-01
+
+Tìm kiếm User (USER-SRCH)
+
+USER-SRCH-NG-01
+
+USER-SRCH-BD-01
+
+USER-SRCH-UI-01
+
+Xem Flashcard (USER-FC)
+
+USER-FC-UI-03
+
+USER-FC-NG-02
+
+Màn Thống kê (PG-ST)
+
+PG-ST-01-H
+
+PG-ST-01-T2
+
+Bảo mật cơ bản (SEC-ST / CMN-ST)
+
+SEC-ST-01-L
+
+CMN-ST-01-L

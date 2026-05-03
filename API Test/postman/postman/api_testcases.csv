@@ -1,0 +1,41 @@
+TestCaseID,Module,Method,Endpoint,Name,ExpectedStatus,DBCheck,RollbackScope
+TC-AUTH-REG-001,AUTH,POST,/api/auth/registration/,Register new account,200|201,auth_user row exists for registration_email,Delete qa_reg_* users
+TC-AUTH-REG-VERIFY-001,AUTH,POST,/api/auth/registration/verify-email/,Verify email with invalid key,400|404,No new auth_user row,None
+TC-AUTH-REG-RESEND-001,AUTH,POST,/api/auth/registration/resend-email/,Resend verification email,not_5xx,No destructive changes,None
+TC-AUTH-LOGIN-001,AUTH,POST,/api/auth/login/,Login with seeded account,200|201,Auth token issued,None
+TC-AUTH-USER-001,AUTH,GET,/api/auth/user/,Get current user,200,Read-only,None
+TC-AUTH-USER-UPDATE-001,AUTH,PATCH,/api/auth/user/update/,Update current user profile fields,200,auth_user and/or students_userprofile updated,Reset seeded user names in rollback
+TC-AUTH-USER-AVATAR-NEG-001,AUTH,POST,/api/auth/user/avatar/,Avatar upload without file,400,No avatar path change,None
+TC-AUTH-GOOGLE-MISSING-001,AUTH,POST,/api/auth/google/id-token/,Google login missing token,400,No user created,None
+TC-AUTH-PWD-RESET-REQ-001,AUTH,POST,/api/auth/password/reset/,Password reset request,200,Token generated for seeded user,Reset password back to seed value
+TC-AUTH-PWD-RESET-CONFIRM-001,AUTH,POST,/api/auth/password/reset/confirm/,Password reset confirm,200,Password hash changed,Password changed back later
+TC-AUTH-LOGIN-NEWPASS-001,AUTH,POST,/api/auth/login/,Login with new password,200|201,Auth token issued,None
+TC-AUTH-PWD-CHANGE-001,AUTH,POST,/api/auth/password/change/,Password change back to seed password,200,Password hash changed,Seed password reapplied in rollback
+TC-AUTH-LOGIN-RESETBACK-001,AUTH,POST,/api/auth/login/,Login with restored seed password,200|201,Auth token issued,None
+TC-AUTH-LOGOUT-001,AUTH,POST,/api/auth/logout/,Logout current token,not_5xx,Session/token invalidation per backend config,None
+TC-ACC-LOGIN-PAGE-001,ACCOUNTS,GET,/accounts/login/,Allauth login page,200|302,Read-only HTML interface check,None
+TC-ACC-SIGNUP-PAGE-001,ACCOUNTS,GET,/accounts/signup/,Allauth signup page,200|302,Read-only HTML interface check,None
+TC-ACC-PWD-RESET-PAGE-001,ACCOUNTS,GET,/accounts/password/reset/,Allauth password reset page,200|302,Read-only HTML interface check,None
+TC-VOC-COURSES-ANON-001,VOCABULARY,GET,/api/vocabulary/courses/,Course list requires auth,401|403,Read-only,None
+TC-VOC-COURSES-001,VOCABULARY,GET,/api/vocabulary/courses/,Get course list,200,Read-only,None
+TC-VOC-COURSE-DETAIL-001,VOCABULARY,GET,/api/vocabulary/courses/{{course_id}}/,Get course detail,200,Read-only,None
+TC-VOC-TOPIC-DETAIL-001,VOCABULARY,GET,/api/vocabulary/topics/{{topic_id}}/,Get topic detail,200,Read-only,None
+TC-LRN-PRACTICE-CREATE-001,LEARNING,POST,/api/learning/sessions/practice/,Create practice session,200,learning_learningsession and learning_question rows created,Delete seeded user sessions
+TC-LRN-SESSION-GET-001,LEARNING,GET,/api/learning/sessions/{{practice_session_id}}/,Get practice session,200,Read-only,None
+TC-LRN-SESSION-DETAIL-001,LEARNING,GET,/api/learning/sessions/{{practice_session_id}}/detail/,Get practice session detail,200,Read-only,None
+TC-LRN-QUESTIONS-GET-001,LEARNING,GET,/api/learning/sessions/{{practice_session_id}}/questions/,Get session questions,200,Read-only,None
+TC-LRN-ANSWER-SUBMIT-001,LEARNING,POST,/api/learning/sessions/{{practice_session_id}}/submit-answer/,Submit answer,200,learning_useranswer row created/updated,Delete seeded user sessions
+TC-LRN-SESSION-COMPLETE-001,LEARNING,POST,/api/learning/sessions/{{practice_session_id}}/complete/,Complete session,200,"session completed, progress rows updated",Delete seeded user sessions/progress rows
+TC-LRN-SESSION-HISTORY-001,LEARNING,GET,/api/learning/sessions/history/?limit=5,Get session history,200,Read-only,None
+TC-LRN-REVIEW-CREATE-001,LEARNING,POST,/api/learning/sessions/review/,Create review session,200|400,review session rows created,Delete seeded user sessions
+TC-LRN-EXAM-CREATE-001,LEARNING,POST,/api/learning/sessions/exam/,Create exam session,200,exam session and questions created,Delete seeded user sessions
+TC-LRN-EXAM-CANCEL-001,LEARNING,POST,/api/learning/sessions/{{exam_session_id}}/cancel/,Cancel exam session,200,exam session deleted,None
+TC-LRN-PRON-ASSESS-NEG-001,LEARNING,POST,/api/learning/pronunciation/assess/,Assess pronunciation without file,400,No learning data mutation,None
+TC-PRG-STREAK-001,PROGRESS,GET,/api/progress/streak/,Get streak,200,Read-only,None
+TC-PRG-UPCOMING-001,PROGRESS,GET,/api/progress/upcoming-review/,Get upcoming review,200,Read-only,None
+TC-PRG-OVERVIEW-001,PROGRESS,GET,/api/progress/overview/,Get overview,200,Read-only,None
+TC-PRG-DAILY-001,PROGRESS,GET,/api/progress/daily-progress/,Get daily progress,200,Read-only,None
+TC-PRG-RECENT-001,PROGRESS,GET,/api/progress/recent-sessions/,Get recent sessions,200,Read-only,None
+TC-CHB-CHAT-EMPTY-001,CHATBOT,POST,/api/chat/,Chat endpoint with empty message,400,No chat message rows created on validation failure,None
+TC-CHB-HISTORY-GET-001,CHATBOT,GET,/api/history/,Get chatbot history,200,Read-only,None
+TC-CHB-HISTORY-DELETE-001,CHATBOT,DELETE,/api/history/,Delete chatbot history,200,chatbot_chatmessage rows deleted for seeded user,None

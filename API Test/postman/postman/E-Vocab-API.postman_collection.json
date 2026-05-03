@@ -1,0 +1,1655 @@
+{
+  "info": {
+    "_postman_id": "ffdb1e61-e77c-4a6d-9fb2-bd2e346dd706",
+    "name": "E-Vocab API Regression",
+    "description": "Generated Postman suite for E-Vocab API. Includes auth, learning, progress, chatbot, vocabulary, and allauth interfaces.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "AUTH",
+      "item": [
+        {
+          "name": "TC-AUTH-REG-001 | Register new account",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var runTs = Date.now();",
+                  "pm.environment.set(\"registration_email\", \"qa_reg_\" + runTs + \"@example.com\");",
+                  "pm.environment.set(\"registration_username\", \"qa_reg_\" + runTs);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-REG-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-REG-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 201]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/registration/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{registration_email}}\",\n  \"username\": \"{{registration_username}}\",\n  \"password1\": \"{{registration_password}}\",\n  \"password2\": \"{{registration_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-REG-VERIFY-001 | Verify email with invalid key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-REG-VERIFY-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-REG-VERIFY-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([400, 404]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/registration/verify-email/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"invalid-key\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-REG-RESEND-001 | Resend verification email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-REG-RESEND-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-REG-RESEND-001\");",
+                  "});",
+                  "pm.test(\"Status is not 5xx\", function () {",
+                  "  pm.expect(pm.response.code).to.be.below(500);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/registration/resend-email/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{registration_email}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-LOGIN-001 | Login with seeded account",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-LOGIN-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-LOGIN-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 201]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "var access = data.access || data.key || \"\";",
+                  "pm.expect(access).to.be.a('string').and.not.empty;",
+                  "pm.environment.set('access_token', access);",
+                  "if (data.refresh) { pm.environment.set('refresh_token', data.refresh); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/login/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{seed_email}}\",\n  \"password\": \"{{seed_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-USER-001 | Get current user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-USER-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-USER-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/user/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-USER-UPDATE-001 | Update current user profile fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-USER-UPDATE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-USER-UPDATE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/user/update/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"QA\",\n  \"last_name\": \"Postman\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-USER-AVATAR-NEG-001 | Avatar upload without file",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-USER-AVATAR-NEG-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-USER-AVATAR-NEG-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([400]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/user/avatar/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-GOOGLE-MISSING-001 | Google login missing token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-GOOGLE-MISSING-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-GOOGLE-MISSING-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([400]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/google/id-token/",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-PWD-RESET-REQ-001 | Password reset request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-PWD-RESET-REQ-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-PWD-RESET-REQ-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "pm.expect(data).to.have.property('uid');",
+                  "pm.expect(data).to.have.property('token');",
+                  "pm.environment.set('reset_uid', data.uid);",
+                  "pm.environment.set('reset_token', data.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/password/reset/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{seed_email}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-PWD-RESET-CONFIRM-001 | Password reset confirm",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-PWD-RESET-CONFIRM-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-PWD-RESET-CONFIRM-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/password/reset/confirm/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uid\": \"{{reset_uid}}\",\n  \"token\": \"{{reset_token}}\",\n  \"new_password\": \"{{new_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-LOGIN-NEWPASS-001 | Login with new password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-LOGIN-NEWPASS-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-LOGIN-NEWPASS-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 201]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "var access = data.access || data.key || \"\";",
+                  "pm.expect(access).to.be.a('string').and.not.empty;",
+                  "pm.environment.set('access_token', access);",
+                  "if (data.refresh) { pm.environment.set('refresh_token', data.refresh); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/login/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{seed_email}}\",\n  \"password\": \"{{new_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-PWD-CHANGE-001 | Password change back to seed password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-PWD-CHANGE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-PWD-CHANGE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/password/change/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"old_password\": \"{{new_password}}\",\n  \"new_password1\": \"{{seed_password}}\",\n  \"new_password2\": \"{{seed_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-LOGIN-RESETBACK-001 | Login with restored seed password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-LOGIN-RESETBACK-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-LOGIN-RESETBACK-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 201]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "var access = data.access || data.key || \"\";",
+                  "pm.expect(access).to.be.a('string').and.not.empty;",
+                  "pm.environment.set('access_token', access);",
+                  "if (data.refresh) { pm.environment.set('refresh_token', data.refresh); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/login/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{seed_email}}\",\n  \"password\": \"{{seed_password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-AUTH-LOGOUT-001 | Logout current token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-AUTH-LOGOUT-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-AUTH-LOGOUT-001\");",
+                  "});",
+                  "pm.test(\"Status is not 5xx\", function () {",
+                  "  pm.expect(pm.response.code).to.be.below(500);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/auth/logout/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ACCOUNTS",
+      "item": [
+        {
+          "name": "TC-ACC-LOGIN-PAGE-001 | Allauth login page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-ACC-LOGIN-PAGE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-ACC-LOGIN-PAGE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 302]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var contentType = pm.response.headers.get('Content-Type') || '';",
+                  "pm.test('HTML content returned', function () {",
+                  "  pm.expect(contentType.toLowerCase()).to.include('text/html');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/accounts/login/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-ACC-SIGNUP-PAGE-001 | Allauth signup page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-ACC-SIGNUP-PAGE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-ACC-SIGNUP-PAGE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 302]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var contentType = pm.response.headers.get('Content-Type') || '';",
+                  "pm.test('HTML content returned', function () {",
+                  "  pm.expect(contentType.toLowerCase()).to.include('text/html');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/accounts/signup/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-ACC-PWD-RESET-PAGE-001 | Allauth password reset page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-ACC-PWD-RESET-PAGE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-ACC-PWD-RESET-PAGE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 302]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var contentType = pm.response.headers.get('Content-Type') || '';",
+                  "pm.test('HTML content returned', function () {",
+                  "  pm.expect(contentType.toLowerCase()).to.include('text/html');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/accounts/password/reset/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "VOCABULARY",
+      "item": [
+        {
+          "name": "TC-VOC-COURSES-ANON-001 | Course list requires auth",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-VOC-COURSES-ANON-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-VOC-COURSES-ANON-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([401, 403]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/api/vocabulary/courses/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-VOC-COURSES-001 | Get course list",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-VOC-COURSES-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-VOC-COURSES-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = [];",
+                  "try { data = pm.response.json(); } catch (e) { data = []; }",
+                  "if (Array.isArray(data) && data.length > 0) {",
+                  "  pm.environment.set('course_id', data[0].id);",
+                  "  if (Array.isArray(data[0].topics) && data[0].topics.length > 0) {",
+                  "    pm.environment.set('topic_id', data[0].topics[0].id);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/vocabulary/courses/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-VOC-COURSE-DETAIL-001 | Get course detail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-VOC-COURSE-DETAIL-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-VOC-COURSE-DETAIL-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/vocabulary/courses/{{course_id}}/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-VOC-TOPIC-DETAIL-001 | Get topic detail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-VOC-TOPIC-DETAIL-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-VOC-TOPIC-DETAIL-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/vocabulary/topics/{{topic_id}}/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "LEARNING",
+      "item": [
+        {
+          "name": "TC-LRN-PRACTICE-CREATE-001 | Create practice session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-PRACTICE-CREATE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-PRACTICE-CREATE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "pm.expect(data).to.have.property('session_id');",
+                  "pm.environment.set('practice_session_id', data.session_id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/practice/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic_id\": \"{{topic_id}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-SESSION-GET-001 | Get practice session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-SESSION-GET-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-SESSION-GET-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/{{practice_session_id}}/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-SESSION-DETAIL-001 | Get practice session detail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-SESSION-DETAIL-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-SESSION-DETAIL-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/{{practice_session_id}}/detail/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-QUESTIONS-GET-001 | Get session questions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-QUESTIONS-GET-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-QUESTIONS-GET-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "pm.expect(data).to.have.property('questions');",
+                  "pm.expect(data.questions.length).to.be.above(0);",
+                  "pm.environment.set('question_id', data.questions[0].id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/{{practice_session_id}}/questions/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-ANSWER-SUBMIT-001 | Submit answer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-ANSWER-SUBMIT-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-ANSWER-SUBMIT-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/{{practice_session_id}}/submit-answer/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question_id\": \"{{question_id}}\",\n  \"answer\": 0,\n  \"time_spent\": 1.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-SESSION-COMPLETE-001 | Complete session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-SESSION-COMPLETE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-SESSION-COMPLETE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "pm.expect(data).to.have.property('session_id');",
+                  "pm.environment.set('completed_session_id', data.session_id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/{{practice_session_id}}/complete/",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-SESSION-HISTORY-001 | Get session history",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-SESSION-HISTORY-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-SESSION-HISTORY-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/history/?limit=5"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-REVIEW-CREATE-001 | Create review session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-REVIEW-CREATE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-REVIEW-CREATE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200, 400]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/review/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_questions\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-EXAM-CREATE-001 | Create exam session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-EXAM-CREATE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-EXAM-CREATE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});",
+                  "var data = {};",
+                  "try { data = pm.response.json(); } catch (e) { data = {}; }",
+                  "pm.expect(data).to.have.property('session_id');",
+                  "pm.environment.set('exam_session_id', data.session_id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/exam/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic_id\": \"{{topic_id}}\",\n  \"time_limit\": 10,\n  \"total_questions\": 3,\n  \"pass_score\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-EXAM-CANCEL-001 | Cancel exam session",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-EXAM-CANCEL-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-EXAM-CANCEL-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/sessions/{{exam_session_id}}/cancel/",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-LRN-PRON-ASSESS-NEG-001 | Assess pronunciation without file",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-LRN-PRON-ASSESS-NEG-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-LRN-PRON-ASSESS-NEG-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([400]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/learning/pronunciation/assess/",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PROGRESS",
+      "item": [
+        {
+          "name": "TC-PRG-STREAK-001 | Get streak",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-PRG-STREAK-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-PRG-STREAK-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/progress/streak/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-PRG-UPCOMING-001 | Get upcoming review",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-PRG-UPCOMING-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-PRG-UPCOMING-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/progress/upcoming-review/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-PRG-OVERVIEW-001 | Get overview",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-PRG-OVERVIEW-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-PRG-OVERVIEW-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/progress/overview/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-PRG-DAILY-001 | Get daily progress",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-PRG-DAILY-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-PRG-DAILY-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/progress/daily-progress/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-PRG-RECENT-001 | Get recent sessions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-PRG-RECENT-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-PRG-RECENT-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/progress/recent-sessions/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CHATBOT",
+      "item": [
+        {
+          "name": "TC-CHB-CHAT-EMPTY-001 | Chat endpoint with empty message",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-CHB-CHAT-EMPTY-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-CHB-CHAT-EMPTY-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([400]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/chat/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"   \"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-CHB-HISTORY-GET-001 | Get chatbot history",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-CHB-HISTORY-GET-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-CHB-HISTORY-GET-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/history/"
+          },
+          "response": []
+        },
+        {
+          "name": "TC-CHB-HISTORY-DELETE-001 | Delete chatbot history",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"TC-CHB-HISTORY-DELETE-001 is traceable\", function () {",
+                  "  pm.expect(pm.info.requestName).to.include(\"TC-CHB-HISTORY-DELETE-001\");",
+                  "});",
+                  "pm.test(\"Status code is expected\", function () {",
+                  "  pm.expect([200]).to.include(pm.response.code);",
+                  "});",
+                  "pm.test('Response time < 5000ms', function () {",
+                  "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": "{{base_url}}/api/history/"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "suite_name",
+      "value": "E-Vocab API Regression"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (!pm.environment.get('base_url')) {",
+          "  pm.environment.set('base_url', 'http://127.0.0.1:8000');",
+          "}"
+        ]
+      }
+    }
+  ]
+}
