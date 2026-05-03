@@ -12,8 +12,8 @@ Test Cases:
     UT-LRN-QT-WR-003   — WritingQuestionType.evaluate_answer: từ sai → score=0.0
     UT-LRN-QT-WR-004   — WritingQuestionType.requires_pool() trả False
     UT-LRN-QT-SPK-001  — SpeakingQuestionType.evaluate_answer: assessor=None → False
-    UT-LRN-QT-SPK-002  — SpeakingQuestionType.evaluate_answer: float >= 70 → True
-    UT-LRN-QT-SPK-003  — SpeakingQuestionType.evaluate_answer: float < 70 → False
+    UT-LRN-QT-SPK-002  — SpeakingQuestionType.evaluate_answer: float > 60 (spec UC6/UC8) → True
+    UT-LRN-QT-SPK-003  — SpeakingQuestionType.evaluate_answer: float <= 60 (spec UC6/UC8) → False
     UT-LRN-QT-SPK-004  — SpeakingQuestionType.evaluate_answer: int treated as score
     UT-LRN-QT-SPK-005  — SpeakingQuestionType.evaluate_answer: dict có pronunciation_score
     UT-LRN-QT-SPK-006  — SpeakingQuestionType.evaluate_answer: dict không hợp lệ
@@ -210,44 +210,58 @@ class TestSpeakingQuestionType:
         assert "chưa sẵn sàng" in result["feedback"]
 
     # ── UT-LRN-QT-SPK-002 ─────────────────────────────────────────────────
-    def test_UT_LRN_QT_SPK_002_evaluate_float_answer_above_threshold_is_correct(self, vocab_pool):
-        # TC: UT-LRN-QT-SPK-002 — float score >= 70 → is_correct=True, score chuẩn hoá, pronunciation_score được set
-        # [Arrange] float score >= 70 → pass
+    def test_UT_LRN_QT_SPK_002_evaluate_float_answer_above_spec_threshold_is_correct(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-002 — Spec UC6/UC8: pronunciation > 60% là pass.
+        #     score=65 (>60 theo spec) → is_correct=True
+        #     [Bug expected] Nếu code đang dùng ngưỡng 70 thì test này sẽ FAIL,
+        #     bóc lộ sai lệch giữa code và đặc tả.
+        # [Arrange]
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
 
         with _mock_assessor(MagicMock()):
-            # [Act]
-            result = SpeakingQuestionType.evaluate_answer(85.0, question)
+            # [Act] score=65 — nằm giữa spec 60 và code 70
+            result = SpeakingQuestionType.evaluate_answer(65.0, question)
 
-        # [Assert] is_correct=True, score chuẩn hoá, pronunciation_score được set
-        assert result["is_correct"] is True
-        assert abs(result["score"] - 0.85) < 0.001
-        assert result["pronunciation_score"] == 85.0
+        # [Assert per spec] >60 phải pass
+        assert result["is_correct"] is True, (
+            "Spec UC6/UC8: phát âm > 60% là pass; code 70 là sai đặc tả."
+        )
+        assert abs(result["score"] - 0.65) < 0.001
+        assert result["pronunciation_score"] == 65.0
 
     # ── UT-LRN-QT-SPK-003 ─────────────────────────────────────────────────
-    def test_UT_LRN_QT_SPK_003_evaluate_float_answer_below_threshold_is_wrong(self, vocab_pool):
-        # TC: UT-LRN-QT-SPK-003 — float score < 70 → is_correct=False
-        # [Arrange] float score < 70 → fail
+    def test_UT_LRN_QT_SPK_003_evaluate_float_answer_below_spec_threshold_is_wrong(self, vocab_pool):
+        # TC: UT-LRN-QT-SPK-003 — Spec UC6/UC8: <=60% là fail.
+        #     score=58 (<=60) → is_correct=False
+        # [Arrange]
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
 
         with _mock_assessor(MagicMock()):
-            result = SpeakingQuestionType.evaluate_answer(50.0, question)
+            # [Act] score=58 — dưới ngưỡng spec 60
+            result = SpeakingQuestionType.evaluate_answer(58.0, question)
 
+        # [Assert per spec] <=60 phải fail
         assert result["is_correct"] is False
 
     # ── UT-LRN-QT-SPK-004 ─────────────────────────────────────────────────
     def test_UT_LRN_QT_SPK_004_evaluate_int_answer_treated_as_score(self, vocab_pool):
-        # TC: UT-LRN-QT-SPK-004 — int answer cũng được xử lý như float score
-        # [Arrange] int answer cũng được xử lý như float score
+        # TC: UT-LRN-QT-SPK-004 — int answer cũng được xử lý như float score.
+        #     Theo spec UC6/UC8 (>60% = pass), int=61 phải pass.
+        #     [Bug expected] Nếu code dùng ngưỡng 70, test FAIL → bóc lộ bug.
+        # [Arrange]
         target   = vocab_pool[0]
         question = SpeakingQuestionType.build_question(target)
 
         with _mock_assessor(MagicMock()):
-            result = SpeakingQuestionType.evaluate_answer(75, question)
+            # [Act] int 61 — > 60 (theo spec phải pass)
+            result = SpeakingQuestionType.evaluate_answer(61, question)
 
-        assert result["is_correct"] is True
+        # [Assert per spec]
+        assert result["is_correct"] is True, (
+            "Spec >60% là pass; int 61 phải được nhận là pass."
+        )
 
     # ── UT-LRN-QT-SPK-005 ─────────────────────────────────────────────────
     def test_UT_LRN_QT_SPK_005_evaluate_dict_with_pronunciation_score(self, vocab_pool):
