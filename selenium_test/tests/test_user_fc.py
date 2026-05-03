@@ -1,4 +1,4 @@
-"""USER-FC: UI-03 (lật thẻ), NG-02 (thiếu audio)."""
+"""FLC-ST-03-H: UI-03 (lật thẻ), FLC-ST-07-L (thiếu audio)."""
 import pytest
 
 from pages.auth_helper import login_via_api_and_inject
@@ -14,20 +14,20 @@ def authed_driver(driver, fe_url, be_url, test_user):
 
 
 @pytest.mark.fe
-def test_user_fc_ui_03_flip(authed_driver, fe_url, test_topic_id):
-    """USER-FC-UI-03: click 'lật thẻ' -> hiện mặt sau."""
+def test_flc_st_03_h_flip(authed_driver, fe_url, test_topic_id):
+    """FLC-ST-03-H: click 'lật thẻ' -> hiện mặt sau."""
     page = VocabularyListPage(authed_driver, fe_url).go(test_topic_id)
     # Đảm bảo trang đã render flashcard
     assert page.is_visible(VocabularyListPage.FLASHCARD, timeout=10), \
-        "USER-FC-UI-03 FAIL: không tìm thấy flashcard"
+        "FLC-ST-03-H FAIL: không tìm thấy flashcard"
     page.click_card()
-    assert page.is_flipped(), "USER-FC-UI-03 FAIL: card không chuyển sang trạng thái flipped"
+    assert page.is_flipped(), "FLC-ST-03-H FAIL: card không chuyển sang trạng thái flipped"
 
 
 @pytest.mark.fe
 @pytest.mark.db
-def test_user_fc_ng_02_missing_audio(authed_driver, fe_url, test_topic_id):
-    """USER-FC-NG-02: Từ không có audio -> nút loa phải bị disabled (kỳ vọng).
+def test_flc_st_07_l_missing_audio(authed_driver, fe_url, test_topic_id):
+    """FLC-ST-07-L: Từ không có audio -> nút loa phải bị disabled (kỳ vọng).
     Theo test case manual, đây là FAIL có chủ đích: hiện FE chỉ ẨN nút loa
     chứ không disable. Test sẽ khẳng định đúng kỳ vọng và do đó FAIL — phản
     ánh đúng kết quả manual test (xác nhận bug chưa fix).
@@ -45,10 +45,10 @@ def test_user_fc_ng_02_missing_audio(authed_driver, fe_url, test_topic_id):
     # Nếu nút audio không tồn tại -> kỳ vọng "disabled" không thoả -> FAIL
     if not page.audio_button_present():
         pytest.fail(
-            "USER-FC-NG-02 FAIL (đúng manual): từ không audio thì nút loa "
+            "FLC-ST-07-L FAIL (đúng manual): từ không audio thì nút loa "
             "biến mất hoàn toàn thay vì bị disabled"
         )
     # Nếu có nút thì phải bị disabled
     btns = authed_driver.find_elements(*VocabularyListPage.AUDIO_BTN_FRONT)
     assert all(not b.is_enabled() for b in btns), \
-        "USER-FC-NG-02 FAIL: nút loa vẫn enable cho từ thiếu audio"
+        "FLC-ST-07-L FAIL: nút loa vẫn enable cho từ thiếu audio"

@@ -9,7 +9,7 @@ Auto kiểm thử 24 test case theo checklist `test.md.txt`:
 | UM-ST | 01, 02, 03, 04 |
 | ADMIN-SRCH | HP-01, HP-02, HP-03, NG-02, UI-01 |
 | USER-SRCH | NG-01, BD-01, UI-01 |
-| USER-FC | UI-03, NG-02 |
+| FLC-ST | 03-H, 07-L |
 | PG-ST | 01-H, 01-T2 |
 | SEC-ST / CMN-ST | 01-L, 01-L (3 routes) |
 
