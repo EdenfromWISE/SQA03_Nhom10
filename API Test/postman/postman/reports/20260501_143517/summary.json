@@ -1,0 +1,15 @@
+﻿{
+    "run_id":  "20260501_143517",
+    "collection":  "D:\\Coding_stuff\\idk what\u0027s going on\\SQA03_Nhom10\\E-Vocab\\postman\\E-Vocab-API.postman_collection.json",
+    "environment":  "D:\\Coding_stuff\\idk what\u0027s going on\\SQA03_Nhom10\\E-Vocab\\postman\\E-Vocab-Local.postman_environment.json",
+    "newman_exit_code":  1,
+    "db_snapshot_pre":  "db_snapshot_pre.json",
+    "db_snapshot_post":  "db_snapshot_post.json",
+    "db_snapshot_after_rollback":  "db_snapshot_after_rollback.json",
+    "report_json":  "newman_report.json",
+    "report_junit":  "newman_report.xml",
+    "total_assertions":  96,
+    "failed_assertions":  23,
+    "total_requests":  40,
+    "failed_requests":  32
+}

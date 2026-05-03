@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="E-Vocab API Regression" tests="40" time="2.402">
+  <testsuite name="AUTH / TC-AUTH-REG-001 | Register new account" id="27cdc509-2de5-4721-835b-2be054bbfdfa" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="1" errors="0" time="0.037">
+    <testcase name="TC-AUTH-REG-001 is traceable" time="0.037" classname="AuthTcAuthReg001RegisterNewAccount"/>
+    <testcase name="Status code is expected" time="0.037" classname="AuthTcAuthReg001RegisterNewAccount">
+      <failure type="AssertionFailure" message="expected [ 200, 201 ] to include 400">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 3466991a-f7c2-4e76-9cfb-278076f01ea8.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: AUTH / TC-AUTH-REG-001 | Register new account.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200, 201 ] to include 400.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200, 201 ] to include 400
+   at Object.eval sandbox-script.js:2:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.037" classname="AuthTcAuthReg001RegisterNewAccount"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-REG-VERIFY-001 | Verify email with invalid key" id="f584e567-92c2-4107-bfa7-8a34cac47d6b" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="TC-AUTH-REG-VERIFY-001 is traceable" time="0.006" classname="AuthTcAuthRegVerify001VerifyEmailWithInvalidKey"/>
+    <testcase name="Status code is expected" time="0.006" classname="AuthTcAuthRegVerify001VerifyEmailWithInvalidKey"/>
+    <testcase name="Response time &lt; 5000ms" time="0.006" classname="AuthTcAuthRegVerify001VerifyEmailWithInvalidKey"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-REG-RESEND-001 | Resend verification email" id="5ac79182-cc73-4da1-9d3f-e4858247b815" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="TC-AUTH-REG-RESEND-001 is traceable" time="0.006" classname="AuthTcAuthRegResend001ResendVerificationEmail"/>
+    <testcase name="Status is not 5xx" time="0.006" classname="AuthTcAuthRegResend001ResendVerificationEmail"/>
+    <testcase name="Response time &lt; 5000ms" time="0.006" classname="AuthTcAuthRegResend001ResendVerificationEmail"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGIN-001 | Login with seeded account" id="71f706f4-c357-4d76-843f-cae9dbb9287a" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.337">
+    <testcase name="TC-AUTH-LOGIN-001 is traceable" time="0.337" classname="AuthTcAuthLogin001LoginWithSeededAccount"/>
+    <testcase name="Status code is expected" time="0.337" classname="AuthTcAuthLogin001LoginWithSeededAccount"/>
+    <testcase name="Response time &lt; 5000ms" time="0.337" classname="AuthTcAuthLogin001LoginWithSeededAccount"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-USER-001 | Get current user" id="768798d0-a57d-4897-b5f6-9b8463a29736" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="TC-AUTH-USER-001 is traceable" time="0.008" classname="AuthTcAuthUser001GetCurrentUser"/>
+    <testcase name="Status code is expected" time="0.008" classname="AuthTcAuthUser001GetCurrentUser"/>
+    <testcase name="Response time &lt; 5000ms" time="0.008" classname="AuthTcAuthUser001GetCurrentUser"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-USER-UPDATE-001 | Update current user profile fields" id="b0bed239-1c8a-4fa8-952a-d6ac4dbd3358" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.025">
+    <testcase name="TC-AUTH-USER-UPDATE-001 is traceable" time="0.025" classname="AuthTcAuthUserUpdate001UpdateCurrentUserProfileFields"/>
+    <testcase name="Status code is expected" time="0.025" classname="AuthTcAuthUserUpdate001UpdateCurrentUserProfileFields"/>
+    <testcase name="Response time &lt; 5000ms" time="0.025" classname="AuthTcAuthUserUpdate001UpdateCurrentUserProfileFields"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-USER-AVATAR-NEG-001 | Avatar upload without file" id="94e03c6f-4285-4660-909e-6be16d25c3f2" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="TC-AUTH-USER-AVATAR-NEG-001 is traceable" time="0.007" classname="AuthTcAuthUserAvatarNeg001AvatarUploadWithoutFile"/>
+    <testcase name="Status code is expected" time="0.007" classname="AuthTcAuthUserAvatarNeg001AvatarUploadWithoutFile"/>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="AuthTcAuthUserAvatarNeg001AvatarUploadWithoutFile"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-GOOGLE-MISSING-001 | Google login missing token" id="67535ff3-b64f-41c4-a6c6-f13bfd223664" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.003">
+    <testcase name="TC-AUTH-GOOGLE-MISSING-001 is traceable" time="0.003" classname="AuthTcAuthGoogleMissing001GoogleLoginMissingToken"/>
+    <testcase name="Status code is expected" time="0.003" classname="AuthTcAuthGoogleMissing001GoogleLoginMissingToken"/>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="AuthTcAuthGoogleMissing001GoogleLoginMissingToken"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-PWD-RESET-REQ-001 | Password reset request" id="ad0e4128-02e5-4d4e-a52f-767929ce3c9b" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.011">
+    <testcase name="TC-AUTH-PWD-RESET-REQ-001 is traceable" time="0.011" classname="AuthTcAuthPwdResetReq001PasswordResetRequest"/>
+    <testcase name="Status code is expected" time="0.011" classname="AuthTcAuthPwdResetReq001PasswordResetRequest"/>
+    <testcase name="Response time &lt; 5000ms" time="0.011" classname="AuthTcAuthPwdResetReq001PasswordResetRequest"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-PWD-RESET-CONFIRM-001 | Password reset confirm" id="719a0441-feab-499e-a4e2-c2878269dce2" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.362">
+    <testcase name="TC-AUTH-PWD-RESET-CONFIRM-001 is traceable" time="0.362" classname="AuthTcAuthPwdResetConfirm001PasswordResetConfirm"/>
+    <testcase name="Status code is expected" time="0.362" classname="AuthTcAuthPwdResetConfirm001PasswordResetConfirm"/>
+    <testcase name="Response time &lt; 5000ms" time="0.362" classname="AuthTcAuthPwdResetConfirm001PasswordResetConfirm"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGIN-NEWPASS-001 | Login with new password" id="22de68e7-8779-4a79-9e8e-79b2701ebed7" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.402">
+    <testcase name="TC-AUTH-LOGIN-NEWPASS-001 is traceable" time="0.402" classname="AuthTcAuthLoginNewpass001LoginWithNewPassword"/>
+    <testcase name="Status code is expected" time="0.402" classname="AuthTcAuthLoginNewpass001LoginWithNewPassword"/>
+    <testcase name="Response time &lt; 5000ms" time="0.402" classname="AuthTcAuthLoginNewpass001LoginWithNewPassword"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-PWD-CHANGE-001 | Password change back to seed password" id="57141c0f-6597-4a7b-8890-ddfc0eb6b59c" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.391">
+    <testcase name="TC-AUTH-PWD-CHANGE-001 is traceable" time="0.391" classname="AuthTcAuthPwdChange001PasswordChangeBackToSeedPassword"/>
+    <testcase name="Status code is expected" time="0.391" classname="AuthTcAuthPwdChange001PasswordChangeBackToSeedPassword"/>
+    <testcase name="Response time &lt; 5000ms" time="0.391" classname="AuthTcAuthPwdChange001PasswordChangeBackToSeedPassword"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGIN-RESETBACK-001 | Login with restored seed password" id="9e166ed6-20b7-49c2-9142-6ae6c75226c3" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.503">
+    <testcase name="TC-AUTH-LOGIN-RESETBACK-001 is traceable" time="0.503" classname="AuthTcAuthLoginResetback001LoginWithRestoredSeedPassword"/>
+    <testcase name="Status code is expected" time="0.503" classname="AuthTcAuthLoginResetback001LoginWithRestoredSeedPassword"/>
+    <testcase name="Response time &lt; 5000ms" time="0.503" classname="AuthTcAuthLoginResetback001LoginWithRestoredSeedPassword"/>
+  </testsuite>
+  <testsuite name="AUTH / TC-AUTH-LOGOUT-001 | Logout current token" id="8cb21c5b-de59-468e-b193-56482800c0dc" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.025">
+    <testcase name="TC-AUTH-LOGOUT-001 is traceable" time="0.025" classname="AuthTcAuthLogout001LogoutCurrentToken"/>
+    <testcase name="Status is not 5xx" time="0.025" classname="AuthTcAuthLogout001LogoutCurrentToken"/>
+    <testcase name="Response time &lt; 5000ms" time="0.025" classname="AuthTcAuthLogout001LogoutCurrentToken"/>
+  </testsuite>
+  <testsuite name="ACCOUNTS / TC-ACC-LOGIN-PAGE-001 | Allauth login page" id="806295b3-dd57-438c-bfd4-8914afcb1868" timestamp="2026-05-01T07:40:11.842Z" tests="4" failures="0" errors="0" time="0.012">
+    <testcase name="TC-ACC-LOGIN-PAGE-001 is traceable" time="0.012" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+    <testcase name="Status code is expected" time="0.012" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.012" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+    <testcase name="HTML content returned" time="0.012" classname="AccountsTcAccLoginPage001AllauthLoginPage"/>
+  </testsuite>
+  <testsuite name="ACCOUNTS / TC-ACC-SIGNUP-PAGE-001 | Allauth signup page" id="afe1219f-ca72-42e9-91a9-d06ba83ef1a9" timestamp="2026-05-01T07:40:11.842Z" tests="4" failures="0" errors="0" time="0.019">
+    <testcase name="TC-ACC-SIGNUP-PAGE-001 is traceable" time="0.019" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+    <testcase name="Status code is expected" time="0.019" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.019" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+    <testcase name="HTML content returned" time="0.019" classname="AccountsTcAccSignupPage001AllauthSignupPage"/>
+  </testsuite>
+  <testsuite name="ACCOUNTS / TC-ACC-PWD-RESET-PAGE-001 | Allauth password reset page" id="cd94f038-678b-458e-93bb-6e7eed12198c" timestamp="2026-05-01T07:40:11.842Z" tests="4" failures="0" errors="0" time="0.008">
+    <testcase name="TC-ACC-PWD-RESET-PAGE-001 is traceable" time="0.008" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+    <testcase name="Status code is expected" time="0.008" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.008" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+    <testcase name="HTML content returned" time="0.008" classname="AccountsTcAccPwdResetPage001AllauthPasswordResetPage"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-COURSES-ANON-001 | Course list requires auth" id="5ab775e5-3f3c-4224-9bfd-90f70b5f149b" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.003">
+    <testcase name="TC-VOC-COURSES-ANON-001 is traceable" time="0.003" classname="VocabularyTcVocCoursesAnon001CourseListRequiresAuth"/>
+    <testcase name="Status code is expected" time="0.003" classname="VocabularyTcVocCoursesAnon001CourseListRequiresAuth"/>
+    <testcase name="Response time &lt; 5000ms" time="0.003" classname="VocabularyTcVocCoursesAnon001CourseListRequiresAuth"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-COURSES-001 | Get course list" id="82aaf2ee-1429-4d9b-81ac-c01d51dc24a7" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="TC-VOC-COURSES-001 is traceable" time="0.007" classname="VocabularyTcVocCourses001GetCourseList"/>
+    <testcase name="Status code is expected" time="0.007" classname="VocabularyTcVocCourses001GetCourseList"/>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="VocabularyTcVocCourses001GetCourseList"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-COURSE-DETAIL-001 | Get course detail" id="c17ca84e-c9bd-4b9d-92e2-f19c721d42ad" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="TC-VOC-COURSE-DETAIL-001 is traceable" time="0.007" classname="VocabularyTcVocCourseDetail001GetCourseDetail"/>
+    <testcase name="Status code is expected" time="0.007" classname="VocabularyTcVocCourseDetail001GetCourseDetail"/>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="VocabularyTcVocCourseDetail001GetCourseDetail"/>
+  </testsuite>
+  <testsuite name="VOCABULARY / TC-VOC-TOPIC-DETAIL-001 | Get topic detail" id="30877f34-4e65-43aa-9e82-2e902a269bd0" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="TC-VOC-TOPIC-DETAIL-001 is traceable" time="0.008" classname="VocabularyTcVocTopicDetail001GetTopicDetail"/>
+    <testcase name="Status code is expected" time="0.008" classname="VocabularyTcVocTopicDetail001GetTopicDetail"/>
+    <testcase name="Response time &lt; 5000ms" time="0.008" classname="VocabularyTcVocTopicDetail001GetTopicDetail"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-PRACTICE-CREATE-001 | Create practice session" id="9092d8e3-2ddd-45c1-98b7-0e55a971771a" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.020">
+    <testcase name="TC-LRN-PRACTICE-CREATE-001 is traceable" time="0.020" classname="LearningTcLrnPracticeCreate001CreatePracticeSession"/>
+    <testcase name="Status code is expected" time="0.020" classname="LearningTcLrnPracticeCreate001CreatePracticeSession"/>
+    <testcase name="Response time &lt; 5000ms" time="0.020" classname="LearningTcLrnPracticeCreate001CreatePracticeSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-GET-001 | Get practice session" id="65fd1007-7479-4dd8-ba17-6fcf82f6d982" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="TC-LRN-SESSION-GET-001 is traceable" time="0.008" classname="LearningTcLrnSessionGet001GetPracticeSession"/>
+    <testcase name="Status code is expected" time="0.008" classname="LearningTcLrnSessionGet001GetPracticeSession"/>
+    <testcase name="Response time &lt; 5000ms" time="0.008" classname="LearningTcLrnSessionGet001GetPracticeSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-DETAIL-001 | Get practice session detail" id="c52fc77d-fba3-4827-a804-40f1894add61" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.014">
+    <testcase name="TC-LRN-SESSION-DETAIL-001 is traceable" time="0.014" classname="LearningTcLrnSessionDetail001GetPracticeSessionDetail"/>
+    <testcase name="Status code is expected" time="0.014" classname="LearningTcLrnSessionDetail001GetPracticeSessionDetail"/>
+    <testcase name="Response time &lt; 5000ms" time="0.014" classname="LearningTcLrnSessionDetail001GetPracticeSessionDetail"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-QUESTIONS-GET-001 | Get session questions" id="badb5d97-f7bf-41fa-954c-0ac0014a88e7" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.010">
+    <testcase name="TC-LRN-QUESTIONS-GET-001 is traceable" time="0.010" classname="LearningTcLrnQuestionsGet001GetSessionQuestions"/>
+    <testcase name="Status code is expected" time="0.010" classname="LearningTcLrnQuestionsGet001GetSessionQuestions"/>
+    <testcase name="Response time &lt; 5000ms" time="0.010" classname="LearningTcLrnQuestionsGet001GetSessionQuestions"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-ANSWER-SUBMIT-001 | Submit answer" id="c945f728-36c2-44bb-b90d-0030dfed740c" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.015">
+    <testcase name="TC-LRN-ANSWER-SUBMIT-001 is traceable" time="0.015" classname="LearningTcLrnAnswerSubmit001SubmitAnswer"/>
+    <testcase name="Status code is expected" time="0.015" classname="LearningTcLrnAnswerSubmit001SubmitAnswer"/>
+    <testcase name="Response time &lt; 5000ms" time="0.015" classname="LearningTcLrnAnswerSubmit001SubmitAnswer"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-COMPLETE-001 | Complete session" id="e4837555-cf43-480e-b3c5-de3c83cbb597" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.026">
+    <testcase name="TC-LRN-SESSION-COMPLETE-001 is traceable" time="0.026" classname="LearningTcLrnSessionComplete001CompleteSession"/>
+    <testcase name="Status code is expected" time="0.026" classname="LearningTcLrnSessionComplete001CompleteSession"/>
+    <testcase name="Response time &lt; 5000ms" time="0.026" classname="LearningTcLrnSessionComplete001CompleteSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-SESSION-HISTORY-001 | Get session history" id="8c247ca6-9b9f-4a2a-b638-1053681ff454" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="TC-LRN-SESSION-HISTORY-001 is traceable" time="0.007" classname="LearningTcLrnSessionHistory001GetSessionHistory"/>
+    <testcase name="Status code is expected" time="0.007" classname="LearningTcLrnSessionHistory001GetSessionHistory"/>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="LearningTcLrnSessionHistory001GetSessionHistory"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-REVIEW-CREATE-001 | Create review session" id="8d32d2b3-7af8-48d2-9b24-5525246dcbc3" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="1" errors="0" time="0.006">
+    <testcase name="TC-LRN-REVIEW-CREATE-001 is traceable" time="0.006" classname="LearningTcLrnReviewCreate001CreateReviewSession"/>
+    <testcase name="Status code is expected" time="0.006" classname="LearningTcLrnReviewCreate001CreateReviewSession">
+      <failure type="AssertionFailure" message="expected [ 200 ] to include 400">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 3466991a-f7c2-4e76-9cfb-278076f01ea8.]]>
+        <![CDATA[Collection name: E-Vocab API Regression.]]>
+        <![CDATA[Request name: LEARNING / TC-LRN-REVIEW-CREATE-001 | Create review session.]]>
+        <![CDATA[Test description: Status code is expected.]]>
+        <![CDATA[Error message: expected [ 200 ] to include 400.]]>
+        <![CDATA[Stacktrace: AssertionError: expected [ 200 ] to include 400
+   at Object.eval sandbox-script.js:2:29).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response time &lt; 5000ms" time="0.006" classname="LearningTcLrnReviewCreate001CreateReviewSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-EXAM-CREATE-001 | Create exam session" id="1b1c8bcf-b554-4a26-a1be-3c037dc790c4" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.018">
+    <testcase name="TC-LRN-EXAM-CREATE-001 is traceable" time="0.018" classname="LearningTcLrnExamCreate001CreateExamSession"/>
+    <testcase name="Status code is expected" time="0.018" classname="LearningTcLrnExamCreate001CreateExamSession"/>
+    <testcase name="Response time &lt; 5000ms" time="0.018" classname="LearningTcLrnExamCreate001CreateExamSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-EXAM-CANCEL-001 | Cancel exam session" id="36b5ca24-2ea6-460d-a0f1-b11a9a7de7a1" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.015">
+    <testcase name="TC-LRN-EXAM-CANCEL-001 is traceable" time="0.015" classname="LearningTcLrnExamCancel001CancelExamSession"/>
+    <testcase name="Status code is expected" time="0.015" classname="LearningTcLrnExamCancel001CancelExamSession"/>
+    <testcase name="Response time &lt; 5000ms" time="0.015" classname="LearningTcLrnExamCancel001CancelExamSession"/>
+  </testsuite>
+  <testsuite name="LEARNING / TC-LRN-PRON-ASSESS-NEG-001 | Assess pronunciation without file" id="c30430ef-4510-4c86-ae83-c205fc4a943b" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="TC-LRN-PRON-ASSESS-NEG-001 is traceable" time="0.007" classname="LearningTcLrnPronAssessNeg001AssessPronunciationWithoutFile"/>
+    <testcase name="Status code is expected" time="0.007" classname="LearningTcLrnPronAssessNeg001AssessPronunciationWithoutFile"/>
+    <testcase name="Response time &lt; 5000ms" time="0.007" classname="LearningTcLrnPronAssessNeg001AssessPronunciationWithoutFile"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-STREAK-001 | Get streak" id="90a070d7-1421-44db-93bc-fc5104bcf8c1" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="TC-PRG-STREAK-001 is traceable" time="0.009" classname="ProgressTcPrgStreak001GetStreak"/>
+    <testcase name="Status code is expected" time="0.009" classname="ProgressTcPrgStreak001GetStreak"/>
+    <testcase name="Response time &lt; 5000ms" time="0.009" classname="ProgressTcPrgStreak001GetStreak"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-UPCOMING-001 | Get upcoming review" id="bcfb5e5f-5e05-48a3-9fb8-2ef0154b8741" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="TC-PRG-UPCOMING-001 is traceable" time="0.009" classname="ProgressTcPrgUpcoming001GetUpcomingReview"/>
+    <testcase name="Status code is expected" time="0.009" classname="ProgressTcPrgUpcoming001GetUpcomingReview"/>
+    <testcase name="Response time &lt; 5000ms" time="0.009" classname="ProgressTcPrgUpcoming001GetUpcomingReview"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-OVERVIEW-001 | Get overview" id="00490eee-36c0-447f-89d7-a177b5dbf8b2" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.011">
+    <testcase name="TC-PRG-OVERVIEW-001 is traceable" time="0.011" classname="ProgressTcPrgOverview001GetOverview"/>
+    <testcase name="Status code is expected" time="0.011" classname="ProgressTcPrgOverview001GetOverview"/>
+    <testcase name="Response time &lt; 5000ms" time="0.011" classname="ProgressTcPrgOverview001GetOverview"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-DAILY-001 | Get daily progress" id="89ef1186-4837-404e-9e3e-332d4e5dc443" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.015">
+    <testcase name="TC-PRG-DAILY-001 is traceable" time="0.015" classname="ProgressTcPrgDaily001GetDailyProgress"/>
+    <testcase name="Status code is expected" time="0.015" classname="ProgressTcPrgDaily001GetDailyProgress"/>
+    <testcase name="Response time &lt; 5000ms" time="0.015" classname="ProgressTcPrgDaily001GetDailyProgress"/>
+  </testsuite>
+  <testsuite name="PROGRESS / TC-PRG-RECENT-001 | Get recent sessions" id="7482ad9e-3a0b-45fc-af25-b38911a982b3" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="TC-PRG-RECENT-001 is traceable" time="0.006" classname="ProgressTcPrgRecent001GetRecentSessions"/>
+    <testcase name="Status code is expected" time="0.006" classname="ProgressTcPrgRecent001GetRecentSessions"/>
+    <testcase name="Response time &lt; 5000ms" time="0.006" classname="ProgressTcPrgRecent001GetRecentSessions"/>
+  </testsuite>
+  <testsuite name="CHATBOT / TC-CHB-CHAT-EMPTY-001 | Chat endpoint with empty message" id="1cf164d0-a208-49ad-97c5-6ac20ada7953" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="TC-CHB-CHAT-EMPTY-001 is traceable" time="0.006" classname="ChatbotTcChbChatEmpty001ChatEndpointWithEmptyMessage"/>
+    <testcase name="Status code is expected" time="0.006" classname="ChatbotTcChbChatEmpty001ChatEndpointWithEmptyMessage"/>
+    <testcase name="Response time &lt; 5000ms" time="0.006" classname="ChatbotTcChbChatEmpty001ChatEndpointWithEmptyMessage"/>
+  </testsuite>
+  <testsuite name="CHATBOT / TC-CHB-HISTORY-GET-001 | Get chatbot history" id="7c40b86f-6a51-4073-8540-e689acacab6f" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.005">
+    <testcase name="TC-CHB-HISTORY-GET-001 is traceable" time="0.005" classname="ChatbotTcChbHistoryGet001GetChatbotHistory"/>
+    <testcase name="Status code is expected" time="0.005" classname="ChatbotTcChbHistoryGet001GetChatbotHistory"/>
+    <testcase name="Response time &lt; 5000ms" time="0.005" classname="ChatbotTcChbHistoryGet001GetChatbotHistory"/>
+  </testsuite>
+  <testsuite name="CHATBOT / TC-CHB-HISTORY-DELETE-001 | Delete chatbot history" id="a8157d03-ab53-4a4e-9d53-48c8cfa5229c" timestamp="2026-05-01T07:40:11.842Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="TC-CHB-HISTORY-DELETE-001 is traceable" time="0.008" classname="ChatbotTcChbHistoryDelete001DeleteChatbotHistory"/>
+    <testcase name="Status code is expected" time="0.008" classname="ChatbotTcChbHistoryDelete001DeleteChatbotHistory"/>
+    <testcase name="Response time &lt; 5000ms" time="0.008" classname="ChatbotTcChbHistoryDelete001DeleteChatbotHistory"/>
+  </testsuite>
+</testsuites>

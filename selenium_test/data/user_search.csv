@@ -1,0 +1,4 @@
+tc_id,query,expect,note
+USER-SRCH-NG-01,zzznotexistword999,empty_state,Từ không tồn tại
+USER-SRCH-BD-01,,unchanged,Để trống ô search và Enter
+USER-SRCH-UI-01,,placeholder_visible,Quan sát ô tìm kiếm

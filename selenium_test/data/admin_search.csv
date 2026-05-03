@@ -1,0 +1,6 @@
+tc_id,query,expect,note
+ADMIN-SRCH-HP-01,apple,has_results,Tìm tiếng Anh
+ADMIN-SRCH-HP-02,ApPlE,has_results,Case-insensitive
+ADMIN-SRCH-HP-03,pple,has_results,Sub-string
+ADMIN-SRCH-NG-02,!@#$%^&*(),no_results,Ký tự đặc biệt vô nghĩa
+ADMIN-SRCH-UI-01,apple,has_counter,Có thông báo số lượng kết quả
