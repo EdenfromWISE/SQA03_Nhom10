@@ -1,0 +1,40 @@
+URL: http://localhost:5173/register
+TITLE: localhost
+STORAGE: <error: Message: <unknown>: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+  (Session info: MicrosoftEdge=147.0.3912.98)
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff6a56ef9f5+de55]
+	msedgedriver!GetHandleVerifier [0x7ff6a56efa54+deb4]
+	msedgedriver!GetHandleVerifier [0x7ff6a5a7453a+39299a]
+	msedgedriver!(No symbol) [0x7ff6a5420e5e]
+	msedgedriver!(No symbol) [0x7ff6a542356d]
+	msedgedriver!(No symbol) [0x7ff6a54a0024]
+	msedgedriver!(No symbol) [0x7ff6a548431a]
+	msedgedriver!(No symbol) [0x7ff6a545a467]
+	msedgedriver!(No symbol) [0x7ff6a549f682]
+	msedgedriver!(No symbol) [0x7ff6a5459cac]
+	msedgedriver!(No symbol) [0x7ff6a5458f06]
+	msedgedriver!(No symbol) [0x7ff6a5459ad3]
+	msedgedriver!(No symbol) [0x7ff6a5527569]
+	msedgedriver!(No symbol) [0x7ff6a5523d33]
+	msedgedriver!(No symbol) [0x7ff6a5532f7c]
+	msedgedriver!GetHandleVerifier [0x7ff6a570bfc8+2a428]
+	msedgedriver!GetHandleVerifier [0x7ff6a5714dd6+33236]
+	msedgedriver!GetHandleVerifier [0x7ff6a56f6fe4+15444]
+	msedgedriver!GetHandleVerifier [0x7ff6a56f7129+15589]
+	msedgedriver!GetHandleVerifier [0x7ff6a56e4023+2483]
+	KERNEL32!BaseThreadInitThunk [0x7ffdc243e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffdc3e4c3fc+2c]
+>
+BODY (first 800 chars):
+Rất tiếc… không thể truy cập trang này
+
+localhost từ chối kết nối.
+
+Thử:
+
+Đang kiểm tra kết nối
+Kiểm tra proxy và tường lửa
+ERR_CONNECTION_REFUSED
+Làm mới
+Microsoft Edge

@@ -1,0 +1,102 @@
+URL: http://localhost:5173/topic/1
+TITLE: Danh sách từ vựng - EVocab
+STORAGE: {"ls_access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3ODI0ODg2LCJpYXQiOjE3Nzc4MjEyODYsImp0aSI6ImQyNDg2ZDA2ZDJhZjQ4Njg4NDc4NGZkY2JkOGNiNmUzIiwidXNlcl9pZCI6IjExIn0.Na9YigAFoCsjY7FASF-hmo7nRxir9L5xth2J94_Mlsw","ss_access":null,"path":"/topic/1"}
+BODY (first 800 chars):
+EVocab
+Trang chủ
+Học tập
+Chatbot
+Thống kê
+Người dùng
+S
+Đăng xuất
+← Quay lại
+1/19
+anticipate
+
+/ænˈtɪsɪpeɪt/
+
+đoán trước, liệu trước
+
+They anticipate moving to bigger premises by the end of the year.
+
+Họ dự kiến sẽ di chuyển đến các cơ sở lớn hơn vào cuối năm nay.
+
+Prev WordNext Word
+Các từ vựng trong chủ đề
+
+anticipate
+
+/ænˈtɪsɪpeɪt/
+
+đoán trước, liệu trước
+
+appreciate
+
+/əˈpriːʃieɪt/
+
+đánh giá cao, cảm kích
+
+avoid
+
+/ə'vɔid/
+
+tránh, tránh khỏi; hủy bỏ, bác bỏ
+
+consider
+
+/kən'sidə/
+
+xem như
+
+dislike
+
+/dɪˈslaɪk/
+
+không thích
+
+enjoy
+
+/ɪnˈdʒɔɪ/
+
+yêu thích, thưởng thức
+
+suggest
+
+/səˈdʒest/
+
+góp ý, gợi ý
+
+involve
+
+/ɪnˈvɒlv/
+
+bao gồm, liên quan
+
+keep
+
+/kiːp/
+
+giữ, duy trì
+
+miss
+
+/'mis/
+
+thấy nhớ (ai đó)
+
+mean
+
+/mi:n/
+
+nghĩa là, có nghĩa là
+
+prevent
+
+/prɪˈvent/
+
+ngăn ngừa, phòng ngừa
+
+finish
+
+/'fɪnɪ
